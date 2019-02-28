@@ -1,0 +1,69 @@
+\documentclass{article}
+
+    \usepackage{changepage,aligned-overset,amsfonts}
+    
+    \author{Zheng Xie}
+    \title{Preface}
+    \date{May 28, 2018}
+    
+    \begin{document}
+    \maketitle
+    
+    \setlength\parindent{0em}   % cancel all indent
+    \setlength\parskip{1.0\baselineskip} % set skip between paragraphs
+    
+    \par
+    \textbf{Definition 0.1 (Vector Product)}\\
+    Let $u,v \in \mathbb R^3$. The vector product (or cross product)$u$ and $v$ is the unique vector 
+    $u \land v \in \mathbb R^3$ characterized by
+    $$
+        (u \land v)\cdot w = det(u,v,w)
+    $$ 
+    for all $w \in \mathbb R^3$
+    Here $det(u,v,w)$ means that if we express $u,v$ and $w$ in the natural basis ${e_i}$, then
+    $$
+        det(u,v,w) =   
+        \left| \begin{array}{ccc}   
+            u_1 & u_2 & u_3 \\
+            v_1 & v_2 & v_3 \\
+            w_1 & w_2 & w_3 \\  
+        \end{array} \right|   
+    $$
+    
+    It follows that
+    $$
+        u \land v = 
+        \left| \begin{array}{cc}
+            u_2 & u_3 \\
+            v_2 & v_3 
+        \end{array} \right|e_1
+        -
+        \left| \begin{array}{cc}
+            u_1 & u_3 \\
+            v_1 & v_3 
+        \end{array} \right|e_2
+        +
+        \left| \begin{array}{cc}
+            u_1 & u_2 \\
+            v_1 & v_2 
+        \end{array} \right|e_3
+    $$
+    We also write $u \times v$.\\
+    
+    \par
+    \textbf{Proposition 0.1}\\
+    (1) $u \land v = -v \land u$ (anticommutativity)\\
+    (2) $(au + bv) \land w = au \land w + bv \land w$\\
+    (3) $u \land v = 0$ if and only if u and v are linearly dependent\\
+    (4) $(u \land v) \cdot u = 0$, $(u \land v) \cdot v = 0$
+    
+    \par
+    \textbf{Remark}\\
+    (1) ${u, v, u \land v}$ is a positive basis since 
+        $$
+            det(u, v, u \land v) = (u \land v) \cdot (u \land v) = |u \land v|^2 > 0
+        $$
+    (2) $|u \land v| = |u||v|sin\theta$\\
+    (3) The vector product is \textbf{not} associative.
+
+    \end{document}
