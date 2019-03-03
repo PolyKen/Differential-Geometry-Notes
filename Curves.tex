@@ -24,12 +24,16 @@ A parametrized differentiable curve is not necessarily one-to-one.
 
 \par
 \textbf{Definition 1.2 (regular parametrized differentiable curve)}\\
-A parametrized differentiable curve is called \textbf{regular} if $\alpha'(t) \neq 0$ for all $t \in I$
+A parametrized differentiable curve is called \textbf{regular} if $\alpha'(t) \neq 0$ for all $t \in I$.
+If $|\alpha'(t)| \equiv 1$, then we say that $\alpha(t)$ is parametrized by arc length.
 
 \par
 From now on we shall consider only the regular parametrized differentiable curves.
 Usually we write regular curves in short.
 
+\par
+\textbf{Remark.}\\
+If $\alpha(t)$ is a regular curve, it can always be reparametrized by arc length.
 \par
 Given $t \in I$, the arc length of a regular curve $\alpha:I \to \mathbb R^3$ from the point $t_0$ is
 $$
@@ -37,18 +41,85 @@ $$
 $$
 where
 $$
-    |{\alpha'(t)}| = \sqrt{x'(t)^2+y'(t)^2+z'(t)^2}
+    |{\alpha'(t)}| = \sqrt{x'(t)^2+y'(t)^2+z'(t)^2} > 0
 $$
-Since $\alpha'(t) \neq 0$, the arc length $s$ is a differentiable function of parameter $t$ and we have
+So the inverse function $t = t(s)$ exists and it follows
 $$
-    \frac{ds}{dt}=|\alpha'(t)|
+    \frac{d}{ds}\alpha(t(s)) = \alpha'(t) \cdot t'(s) = \alpha'(t) \cdot \frac{dt}{ds} = 1
 $$
-Hence we have $|\alpha'(s)| = 1$\\
-$\alpha'(t)$ is called the \textbf{tangent vector} at $t$.
 
 \par
 To simplify our exposition, we shall restrict ourselves to curves parametrized by arc length, 
 actually this restriction is not essential.
+
+\par
+\textbf{Definition 1.3 (orientation)}\\
+Two ordered bases $e = \{e_i\}$ and $f = \{f_i\}$, $i=1,2,...,n$, of an n-dimensional vector space $V$ have the
+same orientation if the matrix of change of basis have positive determinant. We denote this relation by $e ~ f$.
+It's easy to see that $~$ is an equivalence relation.\\
+If $det(e_1, e_2, e_3) > 0$, then base $e = \{e_i\}$ is positively oriented. Similarly, if $det(e_1, e_2, e_3) < 0$,
+then base $e = \{e_i\}$ is negatively oriented.
+
+\par
+The set of all ordered basis of $V$ is thus decomposed into two equivalence classes.
+
+\par
+\textbf{Definition 1.4 (vector product)}\\
+Let $u, v \in \mathbb{R}^3$, the vector product of $u$ and $v$ is the unique vector $u \wedge v \in \mathbb{R}^3$
+characterized by
+$$
+    (u \wedge v) \cdot w = det(u, v, w), \quad \text{for all }w \in \mathbb{R}^3
+$$
+Or, equivalently,\\
+if $u$ and $v$ are linearly dependent,
+$$
+    u \wedge v = 0
+$$
+otherwise, $u \wedge v$ is the unique vector such that
+$$
+    (u \wedge v) \cdot u = 0,\quad(u \wedge v) \cdot v = 0
+$$
+$$
+    |u \wedge v| = |u||v|\sin \langle u, v \rangle
+$$
+$$
+    det(u, v, u \wedge v) > 0
+$$
+
+\par
+According to the definition of vector product,
+$$
+    (u \wedge v) \cdot w = det(u, v, w) = 
+    \left|\begin{array}{ccc} 
+            u_1 & v_1 & w_1 \\ 
+            u_2 & v_2 & w_2\\ 
+            u_3 & v_3 & w_3
+    \end{array}\right|
+$$
+Take $w = e_i$ (natural basis) respectively, we have
+$$
+    u \wedge v = \Biggl(
+    \left|\begin{array}{cc} 
+        u_2 & v_2 \\ 
+        u_3 & v_3
+    \end{array}\right|,
+    \left|\begin{array}{cc} 
+        u_3 & v_3 \\ 
+        u_1 & v_1
+    \end{array}\right|,
+    \left|\begin{array}{cc} 
+        u_1 & v_1 \\ 
+        u_2 & v_2
+    \end{array}\right|
+    \Biggr)
+$$
+
+\par
+\textbf{Property 1.1 (vector product)}\\
+1. (anticommutativity) $u \wedge v = - v \wedge u$.\\
+2. $(au + bv) \wedge w = au \wedge w + bv \wedge w$.\\
+3. $u \wedge v = 0$ if and only if $u$ and $v$ are linearly dependent.\\
+4. $(u \wedge v) \cdot u = 0$, $(u \wedge v) \cdot v = 0$.\\
 
 \par
 \textbf{Definition 1.3 (curvature)}\\
