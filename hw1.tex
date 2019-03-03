@@ -184,7 +184,36 @@ $$
     V = S \cdot h = |u||v|\sin \langle u,v \rangle h = |u \wedge v| \rangle \frac{|(u \wedge v) \cdot w|}{|u \wedge v|} = |u \wedge v| \cdot w 
     \quad \qedsymbol
 $$\\
-\textbf{b. }
+\textbf{b. }Note that both sides of the equation
+$$
+    V^2 = 
+    \left|\begin{array}{ccc} 
+        u \cdot u & u \cdot v & u \cdot w \\ 
+        v \cdot u & v \cdot v & v \cdot w \\ 
+        w \cdot u & w \cdot v & w \cdot w \\ 
+    \end{array}\right|
+$$
+are linear in $u,v,w$. So it suffices to show that the equation holds for all basis vectors $e_1, e_2, e_3$, moreover, it's easy to see that,
+if $u, v, w$ are linearly dependent, then both sides will equal to 0. Thus it only remains to verify the cases that $(u, v, w)$ is a 
+substitution of $(e_1, e_2, e_3)$. In these cases,
+$$
+    V^2 = |(u \wedge v) \cdot w|^2 = 1
+$$
+$$
+    \quad
+    \left|\begin{array}{ccc} 
+    u \cdot u & u \cdot v & u \cdot w \\ 
+    v \cdot u & v \cdot v & v \cdot w \\ 
+    w \cdot u & w \cdot v & w \cdot w \\ 
+    \end{array}\right|
+    =
+    \left|\begin{array}{ccc} 
+    1 & 0 & 0 \\ 
+    0 & 1 & 0 \\ 
+    0 & 0 & 1 \\ 
+    \end{array}\right|
+    = 1 \quad \qedsymbol
+$$
 
 
 \end{document}
