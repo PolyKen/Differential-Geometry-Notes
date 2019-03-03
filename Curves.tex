@@ -45,7 +45,7 @@ $$
 $$
 So the inverse function $t = t(s)$ exists and it follows
 $$
-    \frac{d}{ds}\alpha(t(s)) = \alpha'(t) \cdot t'(s) = \alpha'(t) \cdot \frac{dt}{ds} = 1
+    |\frac{d}{ds}\alpha(t(s))| = |\alpha'(t) \cdot t'(s)| = |\alpha'(t)| \cdot \frac{dt}{ds} = 1
 $$
 
 \par
@@ -55,8 +55,8 @@ actually this restriction is not essential.
 \par
 \textbf{Definition 1.3 (orientation)}\\
 Two ordered bases $e = \{e_i\}$ and $f = \{f_i\}$, $i=1,2,...,n$, of an n-dimensional vector space $V$ have the
-same orientation if the matrix of change of basis have positive determinant. We denote this relation by $e ~ f$.
-It's easy to see that $~$ is an equivalence relation.\\
+same orientation if the matrix of change of basis have positive determinant. We denote this relation by $e \sim f$.
+It's easy to see that $\sim$ is an equivalence relation.\\
 If $det(e_1, e_2, e_3) > 0$, then base $e = \{e_i\}$ is positively oriented. Similarly, if $det(e_1, e_2, e_3) < 0$,
 then base $e = \{e_i\}$ is negatively oriented.
 
@@ -120,6 +120,115 @@ $$
 2. $(au + bv) \wedge w = au \wedge w + bv \wedge w$.\\
 3. $u \wedge v = 0$ if and only if $u$ and $v$ are linearly dependent.\\
 4. $(u \wedge v) \cdot u = 0$, $(u \wedge v) \cdot v = 0$.\\
+
+\par
+\textbf{Property 1.2 (vector product)}\\
+Given arbitrary vectors $u, v, x, y \in \mathbb{R}^3$,
+$(u \wedge v) \cdot (x \wedge y) = 
+\left|\begin{array}{cc} 
+    u \cdot x & v \cdot x \\ 
+    u \cdot y & v \cdot y
+\end{array}\right|$.\\
+\textbf{\textit{Proof.}}\\
+$$
+\begin{aligned}
+    (u \wedge v) \cdot (x \wedge y) &= 
+    \Biggl(
+    \left|\begin{array}{cc} 
+        u_2 & v_2 \\ 
+        u_3 & v_3
+    \end{array}\right|,
+    \left|\begin{array}{cc} 
+        u_3 & v_3 \\ 
+        u_1 & v_1
+    \end{array}\right|,
+    \left|\begin{array}{cc} 
+        u_1 & v_1 \\ 
+        u_2 & v_2
+    \end{array}\right|
+    \Biggr)
+    \cdot
+    \Biggl(
+    \left|\begin{array}{cc} 
+        x_2 & y_2 \\ 
+        x_3 & y_3
+    \end{array}\right|,
+    \left|\begin{array}{cc} 
+        x_3 & y_3 \\ 
+        x_1 & y_1
+    \end{array}\right|,
+    \left|\begin{array}{cc} 
+        x_1 & y_1 \\ 
+        x_2 & y_2
+    \end{array}\right|
+    \Biggr)\\
+    &=
+    (u_2v_3-u_3v_2)(x_2y_3-x_3y_2) +
+    (u_3v_1-u_1v_3)(x_3y_1-x_1y_3) +
+    (u_1v_2-u_2v_1)(x_1y_2-x_2y_1)\\
+    &=
+    (u_2v_3x_2y_3 + u_3v_2x_3y_2 + u_3v_1x_3y_1 + u_1v_3x_1y_3 + u_1v_2x_1y_2 + u_2v_1x_2y_1)\\
+    &-(u_3v_2x_2y_3 + u_2v_3x_3y_2 + u_1v_3x_3y_1 + u_3v_1x_1y_3 + u_2v_1x_1y_2 + u_1v_2x_2y_1)\\
+    &= 
+    (u_1x_1 + u_2x_2 + u_3x_3)(v_1y_1 + v_2y_2 + v_3y_3)-(u_1y_1 + u_2y_2 + u_3y_3)(v_1x_1 + v_2x_2 + v_3x_3)\\
+    &=
+    \left|\begin{array}{cc} 
+        u \cdot x & v \cdot x \\ 
+        u \cdot y & v \cdot y
+    \end{array}\right| \quad \qedsymbol\\
+\end{aligned}
+$$
+
+\par
+It follows immediately,
+$$
+    |u \wedge v|^2 = (u \wedge v)\cdot(u \wedge v) = |u|^2|v|^2(1 - \cos^2 \langle u,v\rangle) = |A|^2
+$$
+
+\par 
+\textbf{Property 1.2 (vector product)}\\
+Given arbitrary vectors $u,v,w \in \mathbb{R}^3$, $(u \wedge v) \wedge w = (u \cdot w) \wedge v - (v \cdot w) \wedge u$.\\
+\textbf{\textit{Proof.}}\\
+First we observe that both sides are linear in $u,v,w$, thus the identity will be true if it holds for
+all basis vectors $e_1, e_2, e_3$. This last verification is straightforward, for example,
+$$
+    (e_1 \wedge e_2) \wedge e_3 = e_3 \wedge e_3 = 0 = (e_1 \cdot e_3) \wedge e_2 - (e_2 \cdot e_3) \wedge e_1
+$$
+
+\par
+\textbf{Property 1.3 (vector product)}\\
+Let $u, v$ be parametrized differentiable curves in $\mathbb{R}^3$, then
+$$
+    \frac{d}{dt}(u(t) \wedge v(t)) = u'(t) \wedge v(t) + u(t) \wedge v'(t)
+$$
+\textbf{\textit{Proof.}}\\
+Suppose $u(t) = (x_1(t), y_1(t), z_1(t))$, $v(t) = (x_2(t), y_2(t), z_2(t))$.
+Then
+$$
+\begin{aligned}
+    u(t) \wedge v(t) 
+    &= 
+    \Biggl(
+    \left|\begin{array}{cc} 
+        u_2(t) & v_2(t) \\ 
+        u_3(t) & v_3(t)
+    \end{array}\right|,
+    \left|\begin{array}{cc} 
+        u_3(t) & v_3(t) \\ 
+        u_1(t) & v_1(t)
+    \end{array}\right|,
+    \left|\begin{array}{cc} 
+        u_1(t) & v_1(t) \\ 
+        u_2(t) & v_2(t)
+    \end{array}\right|
+    \Biggr)\\
+    &=
+    (u_2(t)v_3(t)-u_3(t)v_2(t), u_3(t)v_1(t)-u_1(t)v_3(t), u_1(t)v_2(t)-u_2(t)v_1(t))\\
+    &=
+    (u_2(t)v_3(t), u_3(t)v_1(t), u_1(t)v_2(t)) - (u_3(t)v_2(t), u_1(t)v_3(t), u_2(t)v_1(t))
+\end{aligned}
+$$
+The following verification is easy. \quad \qedsymbol
 
 \par
 \textbf{Definition 1.3 (curvature)}\\
