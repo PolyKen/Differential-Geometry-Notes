@@ -85,7 +85,7 @@ $$
 Let $|\alpha'(t_0)| = 0$, it follows $\cos t_0 = 0$, $\sin t_0 = \frac{1}{\sin t_0}$ and we have $t_0 = \frac{\pi}{2} + k\pi$, $k \in \mathbb{Z}$.\\
 So $t_0 = \frac{\pi}{2}$ is the unique solution in $(0, \pi)$. Therefore, $\alpha$ is regular in $(0, \pi)$ except at $t = \frac{\pi}{2}$. \quad \qedsymbol\\\\
 \textbf{b. } Let $(x(t), y(t))$ denote the point of tangency. Since we know that $t$ is the angle that the y axis makes with the vector
-$\alpha'(t)$, the segment length can be calculated by
+$\alpha'(t)$, the segment length $l(t)$ can be calculated by
 $$
     \quad l(t) = \frac{x(t)}{\sin t} = \frac{\sin t}{\sin t} = 1 \quad \qedsymbol
 $$
@@ -178,39 +178,342 @@ $$.
 \textbf{\textit{Solution.}}\\
 \textbf{a. }Let $S$ and $h$ denote the basal area and height of the parallelepiped, then
 $$
-    V = S \cdot h = |u||v|\sin \langle u,v \rangle h = |u \wedge v|\frac{|(u \wedge v) \cdot w|}{|u \wedge v|} = |u \wedge v| \cdot w 
+    V = S \cdot h = |u||v|\sin \langle u,v \rangle h = |u \wedge v|\frac{|(u \wedge v) \cdot w|}{|u \wedge v|} = |(u \wedge v) \cdot w|
     \quad \qedsymbol
 $$\\
-\textbf{b. }Note that both sides of the equation
+\textbf{b. }Let
 $$
-    V = 
-    \sqrt{\left|\begin{array}{ccc} 
+    G = 
+    \left[\begin{array}{ccc} 
         u \cdot u & u \cdot v & u \cdot w \\ 
         v \cdot u & v \cdot v & v \cdot w \\ 
         w \cdot u & w \cdot v & w \cdot w \\ 
-    \end{array}\right|}
+    \end{array}\right]
 $$
-are linear in $u,v,w$. So it suffices to show that the equation holds for all basis vectors $e_1, e_2, e_3$, moreover, it's easy to see that,
-if $u, v, w$ are linearly dependent, then both sides will equal to 0. Thus it only remains to verify the cases that $(u, v, w)$ is a 
-substitution of $(e_1, e_2, e_3)$. In these cases,
+If any two vectors of $u, v, w$ are linearly dependent, then it's easy to see both sides will equal to 0. Thus it only remains to verify the cases that $\{u, v, w\}$
+are linearly independent.\\
+In these cases, $\{u,v,w\}$ is a basis of $\mathbb{R}^3$. By Gram-Schmidt process, we can find an orthonormal basis
+$\{\epsilon_i\}$ based on $u,v,w$, and there exists an upper triangular matrix $P$ such that
 $$
-    V = |(u \wedge v) \cdot w| = 1
+    (u,v,w) = (\epsilon_1, \epsilon_2, \epsilon_3) P = (\epsilon_1, \epsilon_2, \epsilon_3)
+    \left[\begin{array}{ccc} 
+        p_{11} & p_{12} & p_{13} \\ 
+         & p_{22} & p_{23} \\ 
+         &  & p_{33} \\ 
+    \end{array}\right]
 $$
+Hence,
 $$
-    \quad
-    \left|\begin{array}{ccc} 
+\begin{aligned}
+    G &= 
+    \left[\begin{array}{ccc} 
+        u \cdot u & u \cdot v & u \cdot w \\ 
+        v \cdot u & v \cdot v & v \cdot w \\ 
+        w \cdot u & w \cdot v & w \cdot w \\ 
+    \end{array}\right]
+    = 
+    \left[\begin{array}{c} 
+        u\\ 
+        v\\ 
+        w\\ 
+    \end{array}\right] \cdot
+    \left[\begin{array}{ccc}
+        u & v & w
+    \end{array}\right]\\
+    &= P^T \cdot 
+    \left[\begin{array}{c} 
+        \epsilon_1\\ 
+        \epsilon_2\\ 
+        \epsilon_3\\ 
+    \end{array}\right] \cdot
+    \left[\begin{array}{ccc}
+        \epsilon_1 & \epsilon_2 & \epsilon_3
+    \end{array}\right] \cdot P \\
+    &= P^T \cdot I \cdot P = P^TP
+\end{aligned}
+$$
+Therefore, $|G| = |P|^2 = p_{11}^2 \cdot p_{22}^2 \cdot p_{33}^2$.\\
+On the other hand,
+$$
+\begin{aligned}
+    V(u,v,w) &= |(u \wedge v) \cdot w|\\
+    &= |(p_{11}\epsilon_1 \wedge (p_{12}\epsilon_1 + p_{22}\epsilon_2)) \cdot (p_{13}\epsilon_1 + p_{23}\epsilon_2 + p_{33}\epsilon_3)|\\
+    &= |p_{11}p_{22}(\epsilon_1 \wedge \epsilon_2) \cdot (p_{13}\epsilon_1 + p_{23}\epsilon_2 + p_{33}\epsilon_3)|\\
+    &= |p_{11}p_{22}\epsilon_3 \cdot (p_{13}\epsilon_1 + p_{23}\epsilon_2 + p_{33}\epsilon_3)|\\
+    &= |p_{11}p_{22}p_{33}|
+\end{aligned}
+$$
+So we have $V^2 = p_{11}^2 \cdot p_{22}^2 \cdot p_{33}^2 = |G| = 
+\left|\begin{array}{ccc} 
     u \cdot u & u \cdot v & u \cdot w \\ 
     v \cdot u & v \cdot v & v \cdot w \\ 
     w \cdot u & w \cdot v & w \cdot w \\ 
-    \end{array}\right|
-    =
-    \left|\begin{array}{ccc} 
-    1 & 0 & 0 \\ 
-    0 & 1 & 0 \\ 
-    0 & 0 & 1 \\ 
-    \end{array}\right|
-    = 1 \quad \qedsymbol
+\end{array}\right|$.\quad \qedsymbol
+
+\par
+\textbf{1-5 Ex.1}\\
+Given the parametrized curve (helix)
+$$
+    \alpha(s) = (a \cos \frac{s}{c}, a \sin \frac{s}{c}, b \frac{s}{c}), s \in \mathbb{R}
+$$
+where $c^2 = a^2 + b^2$,\\
+\textbf{a. } Show that the parameter $s$ is the arc length.\\
+\textbf{b. } Determine the curvature and the tortion of $\alpha$.\\
+\textbf{c. } Determine the osculating plane of $\alpha$.\\
+\textbf{d. } Show that the lines containing $n(s)$ and passing through $\alpha(s)$
+meet the $z$ axis under a constant angle equal to $\frac{\pi}{2}$.\\
+\textbf{e. } Show that the tangent line of $\alpha$ make a constant angle with the $z$ axis.\\\\
+\textbf{\textit{Solution.}}\\
+\textbf{a. } We only need to verify that $|\alpha(s)| \equiv 1$.\\
+$$
+    \alpha'(s) = (-\frac{a}{c} \sin \frac{s}{c}, \frac{a}{c} \cos \frac{s}{c}, \frac{b}{c})
+$$
+$$
+    \quad |\alpha'(s)| = \sqrt{(-\frac{a}{c} \sin \frac{s}{c})^2 + (\frac{a}{c} \cos \frac{s}{c})^2 + (\frac{b}{c})^2} = \sqrt{\frac{a^2+b^2}{c^2}} = 1 \quad \qedsymbol
+$$
+\\
+\textbf{b. }
+$$
+    \alpha''(s) = (-\frac{a}{c^2} \cos \frac{s}{c}, -\frac{a}{c^2} \sin \frac{s}{c}, 0)
+$$
+$$
+    k(s) = |\alpha''(s)| = \frac{|a|}{c^2}
+$$
+$$
+    n(s) = (-sgn(a) \cdot \cos \frac{s}{c}, -sgn(a) \cdot \sin \frac{s}{c}, 0)
+$$
+$$
+    b(s) = \alpha'(s) \wedge n(s) = (sgn(a) \cdot \frac{b}{c}\sin \frac{s}{c}, -sgn(a) \cdot \frac{b}{c} \cos \frac{s}{c}, \frac{a}{c})
+$$
+$$
+    b'(s) = (sgn(a) \cdot \frac{b}{c^2}\cos \frac{s}{c}, sgn(a) \cdot \frac{b}{c^2} \sin \frac{s}{c}, 0)
+$$
+Hence we have $\tau(s) = \frac{b}{c^2}$. \quad \qedsymbol\\\\
+\textbf{c. }The osculating plane of $\alpha$ is the plane spanned by $t(s)$ and $n(s)$.
+So the normal vector of the osculating plane is $b(s)$. Given $s \in \mathbb{R}$, the osculating plane at $s$ is 
+defined by the equation
+$$
+    sgn(a) \cdot \frac{b}{c}\sin \frac{s}{c}(x - a \cos \frac{s}{c}) - sgn(a) \cdot \frac{b}{c} \cos \frac{s}{c}(y - a \sin \frac{s}{c}) + \frac{a}{c}(z - b\frac{s}{c}) = 0
+$$
+\qedsymbol
+\\\\
+\textbf{d. }Note that $n(s) \cdot (0, 0, 1) = 0$. \quad \qedsymbol
+\\\\
+\textbf{e. }Note that $t(s) \cdot (0, 0, 1) = \frac{b}{c}$ for all $s \in \mathbb{R}$. \quad \qedsymbol
+
+\par
+\textbf{1-5 Ex.2}\\
+Show that the tortion $\tau$ of $\alpha$ is given by
+$$
+    \tau(s) = - \frac{\alpha'(s) \wedge \alpha''(s) \cdot \alpha'''(s)}{|k(s)|^2}
+$$
+\\
+\textbf{\textit{Solution.}}\\
+Since $b'(s) = \tau(s) n(s)$,
+$$
+\begin{aligned}
+    \tau(s) &= b'(s) \cdot n(s) = (t(s) \wedge n(s))' \cdot n(s) \\
+    &= (t'(s) \wedge n(s) + t(s) \wedge n'(s)) \cdot n(s) \\
+    &= (t(s) \wedge n'(s)) \cdot n(s) \\
+    &= (t(s) \wedge (\frac{\alpha''(s)}{k(s)})') \cdot \frac{\alpha''(s)}{k(s)}\\
+    &= \frac{(\alpha'(s) \wedge \alpha'''(s)) \cdot \alpha''(s)}{|k(s)|^2} \\
+    &= -\frac{\alpha'(s) \wedge \alpha''(s) \cdot \alpha'''(s)}{|k(s)|^2} \quad \qedsymbol
+\end{aligned}
+$$
+\par
+\textbf{1-5 Ex.4}\\
+Assume that all normals of a parametrized curve pass through a fixed point. Prove that
+the trace of the curve is contained in a circle.\\\\
+\textbf{\textit{Solution.}}\\
+Suppose the fixed point is denoted by $p_0$. Then given any $s \in I$, $p_0 - \alpha(s) = \lambda(s) \cdot n(s)$, where $0 \leq \lambda(s) \leq 1$.\\
+Take derivatives of both sides of the equation, we have
+$$
+    -t(s) = \lambda(s) n'(s) = \lambda(s) (-k(s)t(s) - \tau(s)b(s)) + \lambda'(s)n(s)
+$$
+Since $t(s)$ is always perpendicular to $b(s)$ and $n(s)$, it follows that $\tau(s)=0$ and $\lambda'(s)=0$, so $t(s) = \lambda(s) k(s)t(s)$, $\lambda(s) = \frac{1}{k(s)} = r$
+where $r$ is a constant.
+Therefore, 
+$$
+    |p_0 - \alpha(s)| = |\lambda(s)n(s)| = r
+$$
+That is, the trace of $\alpha(s)$ is contained in a circle centered at the point $p_0$ with radius $r$.
+
+\par
+\textbf{1-5 Ex.9}\\
+Given a differentiable function $k(s)$, $s \in I$, show that the parametrized plane curve having $k(s) = k$
+as curvature is given by
+$$
+    \alpha(s) = (\int \cos \theta(s)ds + a, \int \sin \theta(s)ds + b),
+$$
+where
+$$
+    \theta(s) = \int k(s)ds + \phi
+$$
+\\
+\textbf{\textit{Solution.}}\\
+Note that
+$$
+    \alpha''(s) = (-\sin{(\theta(s))} \theta'(s), \cos{(\theta(s))}\theta'(s))
+$$
+$$
+    \quad |\alpha''(s)| = |\theta'(s)| = |k(s)| \quad \qedsymbol
 $$
 
+\par
+\textbf{1-5 Ex.12}\\
+Let $\alpha: I \to \mathbb{R}^3$ be a regular parametrized curve (not necessarily by arc length) and let $\beta: J \to \mathbb{R}^3$ be
+a reparametrization of $\alpha(I)$ by the arc length $s = s(t)$, measured from $t_0 \in I$. Let $t = t(s)$
+be the inverse function of $s$ and set $\frac{d\alpha}{dt}=\alpha'$, $\frac{d^2\alpha}{dt^2}=\alpha''$, etc.
+Prove that\\
+\textbf{a. }
+$$
+    \frac{dt}{ds}=\frac{1}{|\alpha'|}, \quad \frac{d^2t}{ds^2} = -\frac{\alpha' \cdot \alpha''}{|\alpha'|^4}
+$$
+\textbf{b. }The curvature of $\alpha$ at $t \in I$ is 
+$$
+    k(t) = \frac{|\alpha' \wedge \alpha''|}{|\alpha'|^3}.\\
+$$
+\textbf{c. }The tortion of $\alpha$ at $t \in I$ is
+$$
+    \tau(t) = - \frac{(\alpha' \wedge \alpha'') \cdot \alpha'''}{|\alpha' \wedge \alpha''|^2}.
+$$
+\textbf{d. }If $\alpha: I \to \mathbb{R}^2$ is a plane curve $\alpha(t) = (x(t), y(t))$, the signed curvature
+of $\alpha$ at $t$ is
+$$
+    k(t) = \frac{x'y'' - x''y'}{(x'^2 + y'^2)^{\frac{3}{2}}}.
+$$
+\\
+\textbf{\textit{Solution.}}\\
+\textbf{a. }
+$$
+    \frac{dt}{ds} = (\frac{ds}{dt})^{-1} = \frac{1}{|\alpha'|}
+$$
+$$
+    \frac{d^2t}{ds^2} = \frac{d}{ds} \frac{1}{|\alpha'(t)|} = -\frac{1}{|\alpha'(t)|^2} \frac{d}{ds}|\alpha'(t)| 
+    = -\frac{1}{|\alpha'(t)|^2} \cdot \frac{\alpha'(t) \cdot \alpha''(t)}{|\alpha'(t)|} \frac{dt}{ds} = - \frac{\alpha' \cdot \alpha''}{|\alpha'|^4} \quad \qedsymbol
+$$
+\\
+\textbf{b. } Note that
+$$
+    \alpha'(t) = \frac{d\beta(s)}{dt} = \frac{d\beta(s)}{ds}\cdot \frac{ds}{dt} = \beta'(s)\frac{ds}{dt}
+$$
+$$
+    \alpha''(t) = \frac{d\alpha'(t)}{dt} = \beta'(s)\frac{d^2s}{dt^2} + \beta''(s)(\frac{ds}{dt})^2
+$$
+Thus
+$$
+\begin{aligned}
+    |\alpha'(t) \wedge \alpha''(t)| &= |(\beta'(s)\frac{ds}{dt} \wedge (\beta''(s)\frac{ds}{dt})^2)| \\
+    &= (\frac{ds}{dt})^3 \cdot |\beta'(s) \wedge \beta''(s)|\\
+    &= (|\alpha'(t)|)^3 \cdot k_{\beta}(s(t)) \\
+    &= (|\alpha'(t)|)^3 \cdot k_{\alpha}(t)
+\end{aligned}
+$$
+So we have
+$$
+    k(t) = k_{\alpha}(t) = \frac{|\alpha' \wedge \alpha''|}{|\alpha'|^3} \quad \qedsymbol
+$$
+\\
+\textbf{c. }
+$$
+\begin{aligned}
+    \tau_{\alpha}(t) = \tau_{\beta}(s(t)) &=-\frac{\beta'(s) \wedge \beta''(s) \cdot \beta'''(s)}{|k_{\beta}(s)|^2}\\
+    &= -\frac{|\beta'(s)|^6 \cdot (\beta'(s) \wedge \beta''(s)) \cdot \beta'''(s)}{|\beta'(s) \wedge \beta''(s)|^2}\\
+    &= -\frac{(\frac{\alpha'}{|\alpha'|} \wedge \frac{\alpha''}{|\alpha'|^2}) \cdot \frac{\alpha'''}{|\alpha'|^3}}{|\frac{\alpha'}{|\alpha'|} \wedge \frac{\alpha''}{|\alpha''|}|^2}\\
+    &= -\frac{(\alpha' \wedge \alpha'') \cdot \alpha'''}{|\alpha' \wedge \alpha''|^2} \quad \qedsymbol
+\end{aligned}
+$$
+\\
+\textbf{d. }By the conclusion of \textbf{b}, we have
+$$
+    |k(t)| = \frac{|\alpha' \wedge \alpha''|}{|\alpha'|^3}
+    = \frac{|(x', y') \wedge (x'', y'')|}{(x'^2+y'^2)^{\frac{3}{2}}} = \frac{|x'y''-x''y'|}{(x'^2+y'^2)^{\frac{3}{2}}}
+$$
+According to the definition of signed curvature, $k(t)>0$ when $det(\alpha', \alpha'')>0$, $k(t)<0$ when
+$det(\alpha', \alpha'')<0$. Hence
+$$
+    \quad k(t) = \frac{x'y''-x''y'}{(x'^2+y'^2)^{\frac{3}{2}}} \quad \qedsymbol
+$$
+
+\par
+\textbf{1-5 Ex.13}\\
+Assume that $\tau(s) \neq 0$ and $k'(s) \neq 0$ for all $s \in I$. Show that a necessary and sufficient
+condition for $\alpha(I)$ to lie on a sphere is that
+$$
+    R^2 + (R')^2T^2 = const.
+$$
+where $R = \frac{1}{k}$, $T = \frac{1}{\tau}$, and $R'$ is the derivative of $R$ relative to $s$.
+\\\\
+\textbf{\textit{Solution.}}\\
+Without loss of generality, we can assume that the sphere is centered at the origin.\\
+"$\Rightarrow$":\\
+Suppose $\alpha(I)$ lies on a sphere, then there exists some constant $C$ such that
+$$
+    |\alpha(s)|^2 = C^2
+$$
+Take derivatives on both sides of the equation, we have
+$$
+    \alpha(s) \cdot \alpha'(s) = \alpha(s) \cdot t(s) = 0
+$$
+$$
+    \alpha(s) \cdot \alpha''(s) + |\alpha'(s)|^2 = k(s) \alpha(s) \cdot n(s) + 1 = 0
+$$
+$$
+    \alpha(s) \cdot \alpha'''(s) + 3\alpha'(s) \cdot \alpha''(s) = \alpha(s) \cdot \alpha'''(s) = 0
+$$
+For each $s \in I$, we can write $\alpha(s)$ in the form of
+$$
+    \alpha(s) = c_1t(s) + c_2n(s) + c_3b(s)
+$$
+The first equation above implies that $c_1=0$, the second equation implies that $c_2 = -\frac{1}{k(s)}$.\\
+Also note that,
+$$
+\begin{aligned}
+    \alpha'''(s) &= (k(s)n(s))' = k'(s)n(s) + k(s)n'(s) = k'(s)n(s) - k^2(s)t(s) - k(s)\tau(s)b(s)\\
+    &= -k^2(s) \cdot t(s) + k'(s) \cdot n(s) - k(s)\tau(s) \cdot b(s)
+\end{aligned}
+$$
+Thus the third equation implies that
+$$
+    c_2 \cdot k'(s) - k(s)\tau(s)c_3 = -\frac{k'(s)}{k(s)} - k(s)\tau(s)c_3 = 0
+$$
+It follows
+$$
+    c_3 = -\frac{k'(s)}{k^2(s)\tau(s)}
+$$
+Thus we have
+$$
+    \alpha(s) = -\frac{1}{k(s)}n(s) - \frac{k'(s)}{k^2(s)\tau(s)}b(s) = -Rn + R'Tb
+$$
+And
+$$
+    \quad |\alpha(s)|^2 = R^2 + (R'T)^2 = C^2 \quad \qedsymbol
+$$
+\\
+"$\Leftarrow$":\\
+Let $\beta(s) = \alpha(s) + Rn - R'Tb$.\\
+First take derivatives on $R^2 + (R'T)^2 = C^2$, we get
+$$
+    RR' + (R'T)(R'T)' = 0
+$$
+Then, note that
+$$
+\begin{aligned}
+    \beta'(s) &= t(s) + R'n + Rn' - (R'T)'b - (R'T)b' \\
+    &= t + R'n + R(-kt-\tau b) - (R'T)'b - (R'T)\tau n\\
+    &= t + R'n - R(\frac{t}{R} + \frac{b}{T}) - (R'T)'b - (R'T)\frac{n}{T}\\
+    &= t + R'n - t - \frac{R}{T}b - (R'T)'b - R'n\\
+    &= -\frac{R}{T}b - (R'T)'b = -b(\frac{R}{T} + (R'T)')
+\end{aligned}
+$$
+Hence
+$$
+    \beta'(s) \cdot R'T = -b(RR' + (R'T)(R'T)') = 0
+$$
+Since $k' \neq 0$, $\tau \neq 0$, it implies $\beta'(s) = 0$ and thus $\beta(s)$ is
+a constant $p_0 \in \mathbb{R}^3$. So we have
+$$
+    \quad |\alpha - p_0| = |\alpha - \beta| = C \quad \qedsymbol
+$$
 
 \end{document}

@@ -115,14 +115,14 @@ $$
 $$
 
 \par
-\textbf{Property 1.1 (vector product)}\\
+\textbf{Proposition 1.1 (vector product)}\\
 1. (anticommutativity) $u \wedge v = - v \wedge u$.\\
 2. $(au + bv) \wedge w = au \wedge w + bv \wedge w$.\\
 3. $u \wedge v = 0$ if and only if $u$ and $v$ are linearly dependent.\\
 4. $(u \wedge v) \cdot u = 0$, $(u \wedge v) \cdot v = 0$.\\
 
 \par
-\textbf{Property 1.2 (vector product)}\\
+\textbf{Proposition 1.2 (vector product)}\\
 Given arbitrary vectors $u, v, x, y \in \mathbb{R}^3$,
 $(u \wedge v) \cdot (x \wedge y) = 
 \left|\begin{array}{cc} 
@@ -186,7 +186,7 @@ $$
 $$
 
 \par 
-\textbf{Property 1.2 (vector product)}\\
+\textbf{Proposition 1.3 (vector product)}\\
 Given arbitrary vectors $u,v,w \in \mathbb{R}^3$, $(u \wedge v) \wedge w = (u \cdot w) \wedge v - (v \cdot w) \wedge u$.\\
 \textbf{\textit{Proof.}}\\
 First we observe that both sides are linear in $u,v,w$, thus the identity will be true if it holds for
@@ -196,7 +196,7 @@ $$
 $$
 
 \par
-\textbf{Property 1.3 (vector product)}\\
+\textbf{Proposition 1.4 (vector product)}\\
 Let $u, v$ be parametrized differentiable curves in $\mathbb{R}^3$, then
 $$
     \frac{d}{dt}(u(t) \wedge v(t)) = u'(t) \wedge v(t) + u(t) \wedge v'(t)
@@ -231,166 +231,117 @@ $$
 The following verification is easy. \quad \qedsymbol
 
 \par
-\textbf{Definition 1.3 (curvature)}\\
-Let $\alpha: I \to \mathbb R^3$ be a RPDC parametrized by arc length $s \in I$. $k(s) = |\alpha''(s)|$ is
+\textbf{Definition 1.5 (curvature)}\\
+Let $\alpha: I \to \mathbb R^3$ be a regular curve parametrized by arc length. Given $s \in I$, $k(s) = |\alpha''(s)|$ is
 called the \textbf{curvature} of $\alpha$ at $s$.
 
 \par
 If $\alpha$ is a straight line, $\alpha(s) = us + v$, then $k \equiv 0$. It's also true conversely.
 
 \par
-\textbf{Proposition 1.1}\\
-Let $\alpha: I \to \mathbb R^3$ be a RPDC parametrized by arc length $s \in I$. For any $s \in I$,
-there exists a unit vector $n(s)$ such that $n(s)$ is normal to tangent vector $\alpha'(s)$ and
-$\alpha''(s) = k(s)n(s)$. $n(s)$ is called the \textbf{normal vector} at $s$. The plane determined by the
-(unit) tangent vector $\alpha'(s)$ and normal vector $n(s)$ is called the \textbf{osculating plane} at $s$.
+\textbf{Definition 1.6 (tangent vector)}\\
+Let $\alpha: I \to \mathbb R^3$ be a regular curve parametrized by arc length. The tangent vector at $s \in I$ is defined
+by $t(s) = \alpha'(s)$.
 
 \par
+\textbf{Definition 1.7 (normal vector)}\\
+Let $\alpha: I \to \mathbb R^3$ be a regular curve parametrized by arc length, at points where $k(s) \neq 0$,
+a unit vector $n(s)$ is in the direction $\alpha''(s)$ is well defined by the equation
+$\alpha''(s) = k(s)n(s)$.
+
+\par
+\textbf{Proposition 1.5 (normal vector)}\\
+Let $\alpha: I \to \mathbb R^3$ be a regular curve parametrized by arc length, for any $s \in I$, $\alpha''(s)$ is normal to $\alpha'(s)$.\\
 \textbf{\textit{Proof.}}\\
-It suffices to show that $\alpha''(s)$ is normal to $\alpha'(s)$.\\
-Since $\alpha'(s) = 1$, $\alpha'(s) \cdot \alpha'(s) = 1$\\
-By differentiating it we obtain $\alpha'(s) \cdot \alpha''(s) = 0$.
+Since we have $\alpha'(s) \cdot \alpha'(s) = 1$, take derivatives on both sides of the equation and it follows
+$$
+    \quad \alpha''(s) \cdot \alpha'(s) = 0 \quad \qedsymbol
+$$
 
 \par
-At points where $k(s) = 0$, the normal vector (and therefore the osculating plane) is not defined. It is
-therefore convenient to say that $s \in I$ is a \textbf{singular point of order 1} if $\alpha''(s) = 0$ 
-(in this context, the points where $\alpha'(s) = 0$ are called singular points of order 0).\\
-In what follows, we shall restrict ourselves to RPDC parametrized by arc length without singular points
-of order 1. We shall denote by $t(s) = \alpha'(s)$ the (unit) tangent vector of $\alpha$ at $s$. Thus,
-$t'(s) = k(s)n(s)$.
+\textbf{Definition 1.8 (osculating plane)}\\
+The plane determined by tangent vector $t(s)$ and normal vector $n(s)$ is called the osculating plane at $s$.
 
 \par
-\textbf{Definition 1.4 (binormal vector)}\\
-Let $\alpha: I \to \mathbb R^3$ be a RPDC parametrized by arc length $s \in I$. Given $s$, 
-$b(s) = t(s) \land n(s)$ is called the \textbf{binormal vector} at $s$, where $t(s)$ is the tangent vector, 
-$n(s)$ is the normal vector. 
+\textbf{Remark.}\\
+At points where $k(s) = 0$, the normal vector (and therefore the osculating plane) is not defined. To proceed
+with the local analysis of curves, we need, in an essential way, the osculating plane. It is therefore convenient
+to say that $s \in I$ is a singular point of order 1 if $\alpha''(s)=0$.
+\textbf{In what follows, we shall restrict ourselves to curves parametrized by arc length without singular points
+of order 1}.
 
 \par
-By definition, binormal vector $b(s)$ is normal to the osculating plane. Since $b(s)$ is a unit vector,
-the length $|b'(s)|$ measures the rate of change of the neighboring osculating planes with the osculating
-plane at $s$. That is, $b'(s)$ measures how rapidly the curve pulls away from the osculating plane at $s$,
-in a neighborhood of $s$.
+\textbf{Definition 1.9 (binormal vector)}\\
+The unit vector $b(s) = t(s) \wedge n(s)$ is normal to the osculating plane and will be called
+the binormal vector at $s$. Since $b(s)$ is a unit vector, the length $|b'(s)|$ measures the rate of
+change of the neighboring osculating planes with the osculating plane at $s$. That is, $|b'(s)|$ measures
+how rapidly the curve pulls away from the osculating plane at $s$, in a neighborhood of $s$.\\
 
 \par
-Then we want to compute $b'(s)$. Since $|b(s)| = 1$, $b'(s)$ is normal to $b(s)$ \textbf{(1)}. \\
-On the other hand,
+To compute $b'(s)$ we observe that, on the one hand, $b'(s)$ is normal to $b(s)$ and that, on the other hand,
+$$
+    b'(s) = t'(s) \wedge n(s) + t(s) \wedge n'(s) = \alpha''(s) \wedge \frac{\alpha''(s)}{k(s)} + t(s) \wedge n'(s) = t(s) \wedge n'(s)
+$$
+that is, $b'(s)$ is normal to $t(s)$. Also, we know that $b(s) \cdot b(s) = 1$, which implies $b'(s) \cdot b(s) = 0$, so $b'(s)$ is parallel to $n(s)$.
+Hence we can write $b'(s) = \tau(s)n(s)$, where $\tau: I \to \mathbb{R}$.
+
+\par
+\textbf{Definition 1.10 (tortion)}\\
+Let $\alpha: I \to \mathbb R^3$ be a regular curve parametrized by arc length $s$ such that $\alpha''(s) \neq 0$, $s \in I$.
+The number $\tau(s)$ defined by $b'(s) = \tau(s)n(s)$ is called the tortion of $\alpha$ at $s$.
+
+\par
+\textbf{Proposition 1.6 (plane curve)}\\
+Let $\alpha: I \to \mathbb R^3$ be a regular curve parametrized by arc length, assume that for all $s \in I$, $k(s) \neq 0$, then
+$\alpha$ is a plane curve if and only if $\tau(s) \equiv 0$.
+
+\par
+We have already known that $t'(s) = k(s)n(s)$, $b'(s) = \tau(s)n(s)$, it remains to calculate $n'(s)$.
 $$
 \begin{aligned}
-    b'(s) &= t'(s) \land n(s) + t(s) \land n'(s) \\ &= k(s)n(s) \land n(s) + t(s) \land n'(s) \\ &= t(s) \land n'(s)
+    n'(s) &= (b(s) \wedge t(s))' = b'(s) \wedge t(s) + b(s) \wedge t'(s)\\
+    &= (\tau(s)n(s)) \wedge t(s) + b(s) \wedge (k(s)n(s))\\
+    &= -\tau(s)b(s) - k(s)t(s)
 \end{aligned}
 $$
-That is, $b'(s)$ is normal to $t(s)$ \textbf{(2)}. By \textbf{(1)(2)} we can conclude that $b'(s)$ is parallel to 
-$n(s)$.\\
-Thus we can write 
-$$
-    b'(s) = \tau (s)n(s)
-$$
 
 \par
-\textbf{Definition 1.5 (torsion)}\\
-Let $\alpha: I \to \mathbb R^3$ be a RPDC parametrized by arc length such that $\alpha''(s) \neq 0$, $s \in I$.\\
-The number $\tau(s)$ defined by $b'(s) = \tau (s)n(s)$ is called the \textbf{torsion} of $\alpha$ at $s$.
-
-\par
-If $\alpha$ is a plane curve, i.e. $\alpha(I)$ is in a plane, then the plane of the curve agrees with the 
-osculating plane. Hence $\tau \equiv 0$. Conversely, if $\tau \equiv 0$ (and $k(s) \neq 0$), then $b(s) \equiv b_0$
-is a constant, and therefore
+\textbf{Definition 1.11 (Frenet formulas)}\\
 $$
-(\alpha (s) \cdot b_0)' = \alpha '(s) \cdot b_0 = 0
+    t' = kn
 $$
-It follows that $\alpha(s) \cdot b_0 = c$ where $c$ is a constant. Hence $\alpha(s)$ is contained in a plane normal
-to $b_0$. The condition that $k \neq 0$ is essential here.
-
-\par
-In contrast to the curvature, the torsion may be either positive or negative. Notice that by changing orientation
-the binormal vector changes sign, since $b(s) = t(s) \land n(s)$. It follows that $b'(s)$, and, therefore, the
-torsion, remain invariant under a change of orientation.
-
-\par
-To compute $n'(s)$, note that $n(s) = b(s) \land t(s)$, we have
 $$
-    n'(s) = b'(s) \land t(s) + b(s) \land t'(s) = -\tau (s)b(s) -k(s)t(s)
+    n' = -\tau b - kt
 $$
+$$
+    b' = \tau n
+$$
+We can write it in the form of matrix:
+$$
+    \left(\begin{array}{c}
+        t'\\n'\\b'
+    \end{array}
+    \right)
+    =
+    \left(\begin{array}{ccc} 
+     & k & \\ 
+    -k & & -\tau \\
+     & \tau &
+    \end{array}\right)
+    \left(\begin{array}{c}
+        t\\n\\b
+    \end{array}
+    \right)
+$$
+The $tb$ plane is called the rectifying plane, and the $nb$ plane the normal plane.
 
 \par
 \textbf{Theorem 1.1 (fundamental theorem of the local theory of curves)}\\
-Given differentiable functions $k(s)>0$ and $\tau (s)$, $s \in I$, there exists a regular parametrized curve
-$\alpha:I \to \mathbb R^3$ such that $s$ is the arc length, $k(s)$ is the curvature, and $\tau (s)$ is the torsion
-of $\alpha$. Moreover, any other curve $\bar{\alpha}$, satisfying the same conditions, differs from $\alpha$ by a
-rigid motion, that is, there exists an orthogonal linear map $\rho$ of $\mathbb R^3$ with positive determinant
-and a vector $c$ such that $\bar{\alpha} = \rho \circ \alpha + c$.
-
-\par
-\textbf{Remark}\\
-Given a regular parametrized curve $\alpha:I \to \mathbb R^3$ (not necessarily parametrized by arc length), it is
-possible to obtain a curve $\beta:J \to \mathbb R^3$ parametrized by arc length which has the same trace as 
-$\alpha$. In fact, Let
-$$
-    s = s(t) = \int_{t_0}^{t}|\alpha'(t)|dt,\quad t,t_0 \in I
-$$
-Since $\frac{ds}{dt} = |\alpha'(t)| \neq 0$, the function $s = s(t)$ has a differentiable inverse
-$t = t(s)$, $s \in s(I) = J$, where, by an abuse of notation, $t$ also denotes the inverse function $s^{-1}$ of
-$s$. Now set $\beta = \alpha \circ t:J \to \mathbb R^3$. It's clear that $\beta(J) = \alpha(I)$ and
-$|\beta'(s)| = |\alpha'(t) \cdot \frac{dt}{ds}| = 1$. This shows that $\beta$ has the same trace as $\alpha$ and
-is parametrized by arc length. It is usual to say that $\beta$ is a reparametrization of $\alpha(I)$ by arc
-length.\\
-This fact allows us to extend all local concepts previously defined to regular curves with an arbitrary parameter.
-Thus, we say that the curvature $k(t)$ of $\alpha:I \to \mathbb R^3$ at $t \in I$ is the curvature of a
-reparametrization $\beta: J \to \mathbb R^3$ of $\alpha(I)$ by arc length at the corresponding point $s = s(t)$.
-This is clearly independent of the choice of $\beta$ and shows that the restriction of considering only curves
-parametrized by arc length is not essential.
-
-\par
-\textbf{Definition 1.6 (closed plane curve, simple curve)}\\
-A \textbf{closed plane curve} is a RPDC $\alpha:[a,b] \to \mathbb R^2$ such that $\alpha$ and all its derivatives
-agree at $a$ and $b$. That is,
-$$
-    \alpha(a) = \alpha(b), \alpha'(a) = \alpha'(b), \alpha''(a) = \alpha''(b), \cdots
-$$
-The curve $\alpha$ is \textbf{simple} if it has no further self-intersections. That is, if $t_1, t_2 \in [a,b)$, 
-$t_1 \neq t_2$, then $\alpha(t_1) \neq \alpha(t_2)$.
-
-\par
-We assume that a simple closed curve $C$ in the plane bounds a region of this plane that is called the 
-\textbf{interior} of $C$. This is part of the Jordan curve theorem. Whenever we speak of the area bounded by a
-simple closed curve $C$, we mean the area of the interior of $C$. We assume further that the parameter of a
-simple closed curve can be so chosen that if one is going along the curve in the direction of increasing paramters,
-then the interior of the curve remains to the left. Such a curve will be called \textbf{positively oriented}.
-
-\par
-\textbf{Theorem 1.2 (the isoperimetric inequality)}\\
-Let $C$ be a simple closed plane curve with length $l$, and let $A$ be the area of the region bounded by $C$.
-Then
-$$
-    l^2 - 4\pi A \geq 0
-$$
-and equality holds if and only if $C$ is a circle.
-
-\par
-\textbf{Definition 1.7 (vertex)}\\
-A \textbf{vertex} of a regular plane curve $\alpha:[a,b] \to \mathbb R^2$ is a point $t \in [a,b]$ where
-$k'(t) = 0$.
-
-\par
-For instance, an ellipse with unequal axes has exactly four vertices, namely the points where the axes meet the
-ellipse.
-
-\par
-\textbf{Theorem 1.3 (the four-vertex theorem)}\\
-A simple closed convex curve has at least four vertices.
-
-\par
-A straight line $L$ in the plane is determined by the distance $\rho \geq 0$ from $L$ to the origin $O$ of the
-coordinates and by the angle $\theta$, $0 \leq \theta < 2\pi$ which a half-line starting at $O$ and normal to
-$L$ makes with the $x$ axis. 
-
-\par
-\textbf{Theorem 1.4 (the Cauchy-Crofton formula)}\\
-Let $C$ be a regular plane curve with length $l$. The measure of the set of straight lines (counted with
-multiplicities) which meet $C$ is equal to $2l$. That is,
-$$
-    \iint n d\rho d\theta = 2l
-$$
-where $n = n(\rho,\theta)$ is the number of intersection points of the straight line $(\rho,\theta)$ with $C$.
+Given differentiable function $k(s)>0$ and $\tau(s)$, $s \in I$, there exists a regular
+parametrized curve $\alpha: I \to \mathbb{R}^3$ such that $s$ is the arc length, $k(s)$ is
+the curvature, and $\tau(s)$ is the tortion of $\alpha$. Moreover, any other curve 
+$\overline{\alpha}$, satisfying the same conditions, differs from $\alpha$ by a rigid motion.
+That is, there exists an orthonormal linear map $\rho$ of $\mathbb{R}^3$, with positive
+determinant, and a vector $c$ such that $\overline{\alpha} = \rho \alpha + c$.
 
 \end{document}
