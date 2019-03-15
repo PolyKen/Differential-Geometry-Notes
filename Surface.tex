@@ -1,6 +1,8 @@
 \documentclass{article}
 
-\usepackage{changepage,aligned-overset,amsfonts}
+\usepackage{changepage,aligned-overset,amsfonts,amssymb,amsthm,enumerate,geometry,mathrsfs}
+
+\geometry{a4paper, scale = 0.8}
 
 \author{Zheng Xie}
 \title{Surfaces}
@@ -11,15 +13,64 @@
     
 \setlength\parindent{0em}   % cancel all indent
 \setlength\parskip{1.0\baselineskip} % set skip between paragraphs
+
+\par
+Roughly speaking, a regualr surface in $\mathbb{R}^3$ is obtained by taking pieces of a plane,
+deforming them, and arranging them in such a way that the resulting figure has no sharp points, edges, or self-intersections
+and so that it makes sense to speak of a tangent plane at points of the figure.\\
+The idea is to define a set that is, in a certain sense, two-dimensional and that also is smooth
+enough so that the usual notions of calculus can be extended to it.
     
 \par
 \textbf{Definition 2.1 (Regular Surface)}\\
 A subset $S \subset \mathbb R^3$ is a regular surface if for each $p \in S$, there exists a neighborhood
-$V \in \mathbb R^3$, an open set $U \in \mathbb R^2$ and an onto map $x:U \to V \cap S$ such that\\
-(1)$x$ is differentiable, i.e. if $x(u,v) = (x_1(u,v),x_2(u,v),x_3(u,v))$, $(u,v) \in U$, then $x_i(u,v)$
-have continuous partial derivatives of all orders in U.\\
-(2)$x$ is a homeomorphism, i.e. $x^{-1}: V \cap S \to U$ is continuous.\\
-(3)(regularity condition)\\For each $q \in U$, 
+$V \in \mathbb R^3$, an open set $U \in \mathbb R^2$ and an onto map $\mathcal{X}:U \to V \cap S$ such that\\
+(1) $\mathcal{X}$ is differentiable, i.e. if we write\\
+$$
+    \mathcal{X}(u,v) = (x(u,v), y(u,v), z(u,v)), (u,v) \in U
+$$
+Then the functions $x(u,v), y(u,v), z(u,v)$ have continuous partial derivatives of all orders in U.\\
+(2) $\mathcal{X}$ is a homeomorphism, since $\mathcal{X}$ is continuous by condition (1), this means that 
+$\mathcal{X}^{-1}: V \cap S \to U$ is continuous.\\
+(3) (regularity condition) For each $q \in U$, the differential $d\mathcal{X}_q: \mathbb{R}^2 \to \mathbb{R}^3$
+is one-to-one.
+
+\par
+The mapping $\mathcal{X}$ is called a parametrization or system of (local) coordinates
+in a neighborhood of $p$. The neighborhood $V \cap S$ of $p$ in $S$ is called a coordinate neighborhood.
+
+\par
+To give condition (3) a more familiar form, let us compute the matrix of the linear map $d\mathcal{X}_q$ in the
+canonical bases $e_1 = (1,0)$, $e_2 = (0,1)$ of $\mathbb{R}^2$ with coordinates $(u,v)$ and
+$f_1 = (1,0,0)$, $f_2 = (0,1,0)$, $f_3 = (0,0,1)$ of $\mathbb{R}^3$, with coordinates $(x,y,z)$.\\
+Let $q = (u_0, v_0)$, the vector $e_1$ is tangent to the curve $\alpha: \mathbb{R} \to U \subset \mathbb{R}^2, u \mapsto (u,v_0)$
+whose image under $\mathcal{X}$ is
+the curve
+$$
+    \beta: \mathbb{R} \to \mathbb{R}^3, \quad u \mapsto (x(u, v_0), y(u, v_0), z(u, v_0))
+$$
+This image curve (called the coordinate curve $v = v_0$) lies on $S$ and has the tangent vector at $\mathcal{X}(q)$,
+which is defined by
+$$
+    (\frac{\partial x}{\partial u}(u_0,v_0), \frac{\partial y}{\partial u}(u_0,v_0), \frac{\partial z}{\partial u}(u_0,v_0)) = \frac{\partial \mathcal{X}}{\partial u}(u_0,v_0)
+$$\\
+By the definition of differential,
+$$
+    d\mathcal{X}_q(e_1) = \frac{\partial \mathcal{X}}{\partial u}(u_0, v_0)
+$$
+$$
+    d\mathcal{X}_q(e_2) = \frac{\partial \mathcal{X}}{\partial v}(u_0, v_0)
+$$\\
+Thus, the matrix of the linear map $d\mathcal{X}_q$ in the referred basis is
+$$
+    d\mathcal{X}_q = 
+    \left(\begin{array}{cc} 
+        \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v} \\\\
+        \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v} \\\\
+        \dfrac{\partial z}{\partial u} & \dfrac{\partial z}{\partial v}
+    \end{array}\right)
+$$
+
 
 \par
 \textbf{Definition 2.2 (Principle Curvature)}\\
