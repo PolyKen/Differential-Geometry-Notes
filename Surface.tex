@@ -24,7 +24,7 @@ enough so that the usual notions of calculus can be extended to it.
 \par
 \textbf{Definition 2.1 (Regular Surface)}\\
 A subset $S \subset \mathbb R^3$ is a regular surface if for each $p \in S$, there exists a neighborhood
-$V \in \mathbb R^3$, an open set $U \in \mathbb R^2$ and an onto map $\mathcal{X}:U \to V \cap S$ such that\\
+$V \subset \mathbb R^3$, an open set $U \subset \mathbb R^2$ and an onto map $\mathcal{X}:U \to V \cap S$ such that\\
 (1) $\mathcal{X}$ is differentiable, i.e. if we write\\
 $$
     \mathcal{X}(u,v) = (x(u,v), y(u,v), z(u,v)), (u,v) \in U
@@ -68,7 +68,116 @@ $$
         \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v} \\\\
         \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v} \\\\
         \dfrac{\partial z}{\partial u} & \dfrac{\partial z}{\partial v}
+    \end{array}\right)_q
+$$
+
+
+\par
+\textbf{Example 2.1 (unit sphere)}\\
+The unit sphere
+$$
+    S^2 = \{(x,y,z) \in \mathbb{R}^3: x^2+y^2+z^2=1\}
+$$
+is a regular surface.\\
+\textbf{\textit{Proof.}}\\
+We first verify that the map $\mathcal{X}_1: U \subset \mathbb{R}^2 \to \mathbb{R}^3$ given by
+$$
+    \mathcal{X}_1(x,y) = (x, y, \sqrt{1-(x^2+y^2)}), (x,y) \in U
+$$
+is a parametrization of $S^2$. Observe that $\mathcal{X}_1(U)$ is the open part of $S^2$ above
+the $xOy$ plane.\\
+Since $x^2+y^2<1$, the function $\sqrt{1-(x^2+y^2)}$ has continuous partial derivatives of all orders.
+Thus, $\mathcal{X}_1$ is differentiable and condition (1) holds.\\
+To check condition (2), we observe that $\mathcal{X}_1$ is one-to-one and that $\mathcal{X}_1^{-1}$ is
+the restriction of the continuous projection $\pi(x,y,z) = (x,y)$ to the set $\mathcal{X}_1(U)$. Thus,
+$\mathcal{X}_1^{-1}$ is continuous in $\mathcal{X}_1(U)$.\\
+To check condition (3), note that
+$$
+    d{\mathcal{X}_{1}} = 
+    \left(\begin{array}{cc} 
+        1 & 0 \\\\
+        0 & 1 \\\\
+        \dfrac{-x}{\sqrt{1-(x^2+y^2)}} & \dfrac{-y}{\sqrt{1-(x^2+y^2)}}
     \end{array}\right)
+$$
+It's easy to see that $d\mathcal{X}_1$ is one-to-one.\\
+Similarly we can verify the above conditions for other parametrizations like
+$$
+    \mathcal{X}_2(x,z) = (x, \sqrt{1-(x^2+z^2)}, z)
+$$
+$$
+    \mathcal{X}_3(y,z) = (\sqrt{1-(y^2+z^2)}, y, z)
+$$
+
+\par
+\textbf{Proposition 2.1 (a simple property of regular surface)}\\
+Let $S \subset \mathbb{R}^2$ be a regular surface, then $S$ is a locally graph, i.e.\\
+$\forall p \in S$, $\exists V$ an open subset of $S$ containing $p$ such that
+$$
+    V = \{(x,y,f(x,y)): (x,y) \in U \subset \mathbb{R}^2\}
+$$
+or
+$$
+    V = \{(x,f(x,z),z): (x,z) \in U \subset \mathbb{R}^2\}
+$$
+or
+$$
+    V = \{(f(y,z),y,z): (y,z) \in U \subset \mathbb{R}^2\}
+$$
+where $U$ is an open set, $f: \mathbb{R}^2 \to \mathbb{R}$ is a differentiable map.\\
+\textbf{\textit{Proof.}}\\
+Take any $p \in S$, there exists a differentiable map $\mathcal{X}: U \subset \mathbb{R}^2 \to V \cap S \subset \mathbb{R}^3$
+such that $\mathcal{X}(q)=p$, where $U \subset \mathbb{R}^2,V \subset \mathbb{R}^3$ are open sets. Moreover,
+$$
+    d\mathcal{X}_q = 
+    \left(\begin{array}{cc} 
+        \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v} \\\\
+        \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v} \\\\
+        \dfrac{\partial z}{\partial u} & \dfrac{\partial z}{\partial v}
+    \end{array}\right)_q
+$$
+has rank 2.\\
+Without loss of generality, we can first assume that
+$$
+    (\dfrac{\partial x}{\partial u}, \dfrac{\partial x}{\partial v}) \text{ and } (\dfrac{\partial y}{\partial u}, \dfrac{\partial y}{\partial v})
+$$
+are linearly independent at point $q$. That is,
+$$
+\left(\begin{array}{cc} 
+    \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v} \\\\
+    \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}
+\end{array}\right)_q
+$$
+is invertible.\\
+Consider projection $\pi: \mathbb{R}^3 \to \mathbb{R}^2$, $\pi (x,y,z) = (x,y)$. It's easy to
+verify that $\pi$ is a differentiable map. Then
+$$
+    \pi \circ \mathcal{X}: U \to W=\pi(\mathcal{X}(U))
+$$
+is also a differentiable map, and
+$$
+    d(\pi \circ \mathcal{X})_q = 
+    \left(\begin{array}{cc} 
+        \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v} \\\\
+        \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}
+    \end{array}\right)_q
+$$
+is invertible.\\
+Now we can apply inverse function theorem to $\pi \circ \mathcal{X}$ at $q$:\\
+Hence, there exists $U_1 \subset U$, let $W_1 = \pi(X(U_1))$, then $\pi \circ \mathcal{X}: U_1 \to W_1$
+is a differentiable map and 
+$$
+    (\pi \circ \mathcal{X})^{-1}: W_1 \to U_1
+$$
+exists, which is also differentiable(hence continuous, and it follows that $W_1$ is an open set).\\
+Consider another map $\mathcal{Y}$
+$$
+    \mathcal{Y} = \mathcal{X} \circ (\pi \circ \mathcal{X})^{-1}: W_1 \to \mathcal{X}(U_1), (x,y) \mapsto (x,y,f(x,y))
+$$
+Therefore, given $p \in S$, we can find an open subset $V=\mathcal{X}(U_1) \subset \mathbb{R}^3$ containing $p$ and an open subset $U=W_1 \subset \mathbb{R}^2$
+such that
+$$
+    V = \{(x,y,f(x,y)): (x,y) \in U \subset \mathbb{R}^2\}
 $$
 
 
