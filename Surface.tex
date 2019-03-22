@@ -15,7 +15,7 @@
 \setlength\parskip{1.0\baselineskip} % set skip between paragraphs
 
 \par
-Roughly speaking, a regualr surface in $\mathbb{R}^3$ is obtained by taking pieces of a plane,
+Roughly speaking, a regular surface in $\mathbb{R}^3$ is obtained by taking pieces of a plane,
 deforming them, and arranging them in such a way that the resulting figure has no sharp points, edges, or self-intersections
 and so that it makes sense to speak of a tangent plane at points of the figure.\\
 The idea is to define a set that is, in a certain sense, two-dimensional and that also is smooth
@@ -106,83 +106,129 @@ $$
     \mathcal{X}_2(x,z) = (x, \sqrt{1-(x^2+z^2)}, z)
 $$
 $$
-    \mathcal{X}_3(y,z) = (\sqrt{1-(y^2+z^2)}, y, z)
+    \quad \quad \mathcal{X}_3(y,z) = (\sqrt{1-(y^2+z^2)}, y, z) \qed
 $$
 
 \par
-\textbf{Proposition 2.1 (a simple property of regular surface)}\\
-Let $S \subset \mathbb{R}^2$ be a regular surface, then $S$ is a locally graph, i.e.\\
-$\forall p \in S$, $\exists V$ an open subset of $S$ containing $p$ such that
-$$
-    V = \{(x,y,f(x,y)): (x,y) \in U \subset \mathbb{R}^2\}
-$$
-or
-$$
-    V = \{(x,f(x,z),z): (x,z) \in U \subset \mathbb{R}^2\}
-$$
-or
-$$
-    V = \{(f(y,z),y,z): (y,z) \in U \subset \mathbb{R}^2\}
-$$
-where $U$ is an open set, $f: \mathbb{R}^2 \to \mathbb{R}$ is a differentiable map.\\
+\textbf{Proposition 2.1}\\
+If $f: U \subset \mathbb{R}^2 \to \mathbb{R}^3$ is a differentiable function in an open set $U$, then
+the graph of $f$, that is, the subset of $\mathbb{R}^3$ given by $(x, y, f(x,y))$ for $(x,y) \in U$, is
+a regular surface.\\
 \textbf{\textit{Proof.}}\\
-Take any $p \in S$, there exists a differentiable map $\mathcal{X}: U \subset \mathbb{R}^2 \to V \cap S \subset \mathbb{R}^3$
-such that $\mathcal{X}(q)=p$, where $U \subset \mathbb{R}^2,V \subset \mathbb{R}^3$ are open sets. Moreover,
+It suffices to show that the map $\mathcal{X}: U \to \mathbb{R}^3$ given by
+$$
+    \mathcal{X}(u,v) = (u,v,f(u,v))
+$$
+is a parametrization of the graph whose coordinate neighborhood covers every point
+of the graph.\\
+It's clearly that $\mathcal{X}$ is differentiable.\\
+Also note that
+$$
+    \mathcal{X}^{-1} = \pi |_{G}
+$$
+where $\pi: \mathcal{R}^3 \to \mathcal{R}^2$ is bounded and thus continuous, $G=\{(x,y,f(x,y)): (x,y) \in U\}$. So $\mathcal{X}^{-1}$
+is continuous and thus $\mathcal{X}$ is a homeomorphism.\\
+Finally, since
+$$
+    d{\mathcal{X}} = 
+    \left(\begin{array}{cc} 
+        1 & 0 \\\\
+        0 & 1 \\\\
+        \dfrac{df}{du} & \dfrac{df}{dv}
+    \end{array}\right)
+$$
+has rank 2 at any point $(u,v) \in U$, it follows that $\mathcal{X}$ is a parametrization.\quad \qedsymbol
+
+\par
+\textbf{Definition 2.2 (critical and regular point)}\\
+Given a differentiable map $F: U \subset \mathbb{R}^n \to \mathbb{R}^m$ defined in an open set $U$ of $\mathbb{R}^n$ we
+say that $p \in U$ is a critical point of $F$ if the differential $dF_p: \mathbb{R}^n \to \mathbb{R}^m$
+is not a surjective (onto) mapping. The image $F(p) \in \mathbb{R}^m$ of a critical point is called a critical value of
+$F$. A point of $\mathbb{R}^m$ which is not a critical value is called a regular value of $F$.
+
+
+\par
+\textbf{Proposition 2.2}\\
+Let $f: U \subset \mathbb{R}^3 \to \mathbb{R}$ be a differentiable function, $U$ is an open subset of $\mathbb{R}^3$, $a$ is a regular
+value of $f$, then $f^{-1}(a)$ is a regular surface.\\
+\textbf{\textit{Proof.}}\\
+Pick any $p \in f^{-1}(a)$, since $a$ is a regular value, we can assume without loss of generality that $\frac{\partial f}{\partial z} \neq 0$.\\
+Then define $F: U \subset \mathbb{R}^3 \to \mathbb{R}^3$ by
+$$
+    F(x,y,z) = (x, y, f(x,y,z))
+$$
+Note that
+$$
+    dF_p = 
+    \left(\begin{array}{ccc}
+        1 & 0 & 0 \\\\
+        0 & 1 & 0 \\\\
+        \dfrac{\partial f}{\partial x} & \dfrac{\partial f}{\partial y} & \dfrac{\partial f}{\partial z}
+    \end{array}\right)_p
+$$
+is invertible. So by inverse function theorem, there exists a neighborhood $V_p \subset \mathbb{R}^3$ of $p$
+and $W_p = F(V_p) \subset \mathbb{R}^3$ such that
+$F: V_p \to W_p$ is invertible and $F^{-1}: W_p \to V_p$ is differentiable. Note that $F^{-1}(x,y,a)=(x,y,z)$,
+hence $F^{-1}: W_p \to V_p$ can be written as
+$$
+    F^{-1}(x,y,a) = (x,y,h(x,y))
+$$
+where $z=h(x,y)$ is a differentiable function here.\\
+Therefore, $V_p = \{(x,y,h(x,y)): (x,y) \in W_p\}$ is the graph of $h(x,y)$ and by $Proposition 2.1$ we know that
+$V_p$ is a regular surface. Since $p$ is arbitrary in $f^{-1}(a)$, $f^{-1}(a)$ is a regular surface. \qedsymbol
+
+\par
+\textbf{Proposition 2.3}\\
+Let $S \subset \mathbb{R}^3$ be a regular surface and $p \in S$, then there exists a neighborhood $V$ of $p \in S$
+such that $V$ is the graph of a differentiable function which has one of the following three forms:
+$z=f(x,y), y=g(x,z), x=h(y,z)$.\\
+\textbf{\textit{Proof.}}\\
+Since $S$ is a regular surface, we know that there exists an open set $U \subset \mathbb{R}^2$, $V=\mathcal{X}(U) \subset \mathbb{R}^3$
+and a diffeomorphism $\mathcal{X}: U \to V$ such that
 $$
     d\mathcal{X}_q = 
-    \left(\begin{array}{cc} 
-        \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v} \\\\
-        \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v} \\\\
+    \left(
+    \begin{array}{cc}
+        \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}\\\\
+        \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}\\\\
         \dfrac{\partial z}{\partial u} & \dfrac{\partial z}{\partial v}
-    \end{array}\right)_q
+    \end{array}
+    \right)_q
 $$
-has rank 2.\\
-Without loss of generality, we can first assume that
+has rank $2$, where $\mathcal{X}(q)=p, q \in U$
+Without loss of generality, we can assume that
 $$
-    (\dfrac{\partial x}{\partial u}, \dfrac{\partial x}{\partial v}) \text{ and } (\dfrac{\partial y}{\partial u}, \dfrac{\partial y}{\partial v})
+    (\frac{\partial x}{\partial u}, \frac{\partial x}{\partial v}), (\frac{\partial y}{\partial u}, \frac{\partial y}{\partial v})
 $$
-are linearly independent at point $q$. That is,
+are linearly independent at point $q$.\\
+Consider projection $\pi: S \subset \mathbb{R}^3 \to \mathbb{R}^2$, then $\pi \circ \mathcal{X}: U \to W=\pi(\mathcal{X}(U)) \subset \mathbb{R}^2$ is differentiable and
 $$
-\left(\begin{array}{cc} 
-    \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v} \\\\
-    \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}
-\end{array}\right)_q
-$$
-is invertible.\\
-Consider projection $\pi: \mathbb{R}^3 \to \mathbb{R}^2$, $\pi (x,y,z) = (x,y)$. It's easy to
-verify that $\pi$ is a differentiable map. Then
-$$
-    \pi \circ \mathcal{X}: U \to W=\pi(\mathcal{X}(U))
-$$
-is also a differentiable map, and
-$$
-    d(\pi \circ \mathcal{X})_q = 
-    \left(\begin{array}{cc} 
-        \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v} \\\\
+    d(\pi \circ \mathcal{X}) = 
+    \left(
+    \begin{array}{cc}
+        \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}\\\\
         \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}
-    \end{array}\right)_q
+    \end{array}
+    \right)
 $$
-is invertible.\\
-Now we can apply inverse function theorem to $\pi \circ \mathcal{X}$ at $q$:\\
-Hence, there exists $U_1 \subset U$, let $W_1 = \pi(X(U_1))$, then $\pi \circ \mathcal{X}: U_1 \to W_1$
-is a differentiable map and 
+whose determinant is non-zero at point $q$ by the assumption above.\\
+Therefore by inverse function theorem, we can shrink $U$ and claim that $(\pi \circ \mathcal{X})^{-1}: W \to U$ exists and
+is differentiable.\\
+Now let $F = \mathcal{X} \circ (\pi \circ \mathcal{X})^{-1}$, then $F: W \subset \mathbb{R}^2 \to V \subset \mathbb{R}^3, (x,y) \mapsto (x,y,z)$ is
+differentiable, so there exists a differentiable function $f: W \to \mathbb{R}$ such that $z=f(x,y)$ for each $(x,y) \in W$.\\
+Moreover, since $\mathcal{X}$ is a homeomorphism, $V=\mathcal{X}(U)$ is a (open) neighborhood of $p$, therefore,
 $$
-    (\pi \circ \mathcal{X})^{-1}: W_1 \to U_1
+    V = \{(x,y,f(x,y)): (x,y) \in W\} \qed
 $$
-exists, which is also differentiable(hence continuous, and it follows that $W_1$ is an open set).\\
-Consider another map $\mathcal{Y}$
-$$
-    \mathcal{Y} = \mathcal{X} \circ (\pi \circ \mathcal{X})^{-1}: W_1 \to \mathcal{X}(U_1), (x,y) \mapsto (x,y,f(x,y))
-$$
-Therefore, given $p \in S$, we can find an open subset $V=\mathcal{X}(U_1) \subset \mathbb{R}^3$ containing $p$ and an open subset $U=W_1 \subset \mathbb{R}^2$
-such that
-$$
-    V = \{(x,y,f(x,y)): (x,y) \in U \subset \mathbb{R}^2\}
-$$
-
 
 \par
-\textbf{Definition 2.2 (Principle Curvature)}\\
-Let $S \subset \mathbb R^3$ be a regular surface.
+\textbf{Remark.}\\
+The condition that $\mathcal{X}$ is a homeomorphism is required, otherwise we may not find an open neighborhood of $p$.
+
+\par
+\textbf{Proposition 2.4}\\
+Let $p$ be a point of a regular surface $S$ and let $\mathcal{X}: U \subset \mathbb{R}^2 \to \mathbb{R}^3$ be a map with $p \in \mathcal{X}(U) \subset S$
+such that conditions 1(differentiable) and 3(regularity condition) hold. Assume that $\mathcal{X}$ is one-to-one, then $\mathcal{X}^{-1}$ is continuous.
+
 
 \end{document}
