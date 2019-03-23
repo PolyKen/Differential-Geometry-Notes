@@ -126,7 +126,7 @@ Also note that
 $$
     \mathcal{X}^{-1} = \pi |_{G}
 $$
-where $\pi: \mathcal{R}^3 \to \mathcal{R}^2$ is bounded and thus continuous, $G=\{(x,y,f(x,y)): (x,y) \in U\}$. So $\mathcal{X}^{-1}$
+where $\pi: \mathbb{R}^3 \to \mathbb{R}^2$ is bounded and thus continuous, $G=\{(x,y,f(x,y)): (x,y) \in U\}$. So $\mathcal{X}^{-1}$
 is continuous and thus $\mathcal{X}$ is a homeomorphism.\\
 Finally, since
 $$
@@ -228,7 +228,41 @@ The condition that $\mathcal{X}$ is a homeomorphism is required, otherwise we ma
 \par
 \textbf{Proposition 2.4}\\
 Let $p$ be a point of a regular surface $S$ and let $\mathcal{X}: U \subset \mathbb{R}^2 \to \mathbb{R}^3$ be a map with $p \in \mathcal{X}(U) \subset S$
-such that conditions 1(differentiable) and 3(regularity condition) hold. Assume that $\mathcal{X}$ is one-to-one, then $\mathcal{X}^{-1}$ is continuous.
+such that conditions 1(differentiable) and 3(regularity condition) hold. Assume that $\mathcal{X}$ is one-to-one, then $\mathcal{X}^{-1}$ is continuous.\\
+\textbf{\textit{Proof.}}\\
+Assume that $\mathcal{X}(u,v)=(x(u,v),y(u,v),z(u,v))$, then by condition 1 and condition3, $x, y, z$ are differentiable and
+$$
+    d\mathcal{X} = 
+    \left(
+        \begin{array}{cc}
+            \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}\\\\
+            \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}\\\\
+            \dfrac{\partial z}{\partial u} & \dfrac{\partial z}{\partial v}
+        \end{array}
+    \right)
+$$
+has rank 2 in $U$.\\
+Similarly we can assume without loss of generality that $\dfrac{\partial(x,y)}{\partial(u,v)} \neq 0$, then consider 
+$$
+    \pi: \mathbb{R}^3 \to \mathbb{R}^2, (x,y,z) \mapsto (x,y)
+$$
+Note that $\pi \circ \mathcal{X}: U \to \pi(\mathcal{X}(U)) \subset \mathbb{R}^2$ is differentiable and
+$$
+    d(\pi \circ \mathcal{X}) = 
+    \left(
+        \begin{array}{cc}
+            \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}\\\\
+            \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}
+        \end{array}
+    \right)
+$$
+which is invertible in $q$. Therefore, by inverse function theorem, the inverse
+$$
+    (\pi \circ \mathcal{X})^{-1}: \pi(\mathcal{X}(U)) \to U
+$$
+exists (with shrunk $U$) and is differentiable, hence continuous.
+Therefore, $\mathcal{X}^{-1} = (\pi \circ \mathcal{X})^{-1} \circ \pi$, as a composition of two
+continuous funciton, is also continuous. \qedsymbol
 
 
 \end{document}
