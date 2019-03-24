@@ -1,0 +1,134 @@
+\documentclass{article}
+
+\usepackage{changepage,aligned-overset,amsfonts,amssymb,amsthm,enumerate,geometry}
+\usepackage{xeCJK}
+\geometry{a4paper, scale = 0.8}
+\setCJKmainfont{STSong}
+\begin{document}
+\author{谢铮 15338200}
+\title{Homework 2}
+\date{Mar 22, 2019}
+\maketitle
+
+\setlength\parindent{0em}   % cancel all indent
+\setlength\parskip{1.0\baselineskip} % set skip between paragraphs
+
+\par
+\textbf{2-2 Ex.1}\\
+Show that the cylinder $\{(x,y,z) \in \mathbb{R}^3: x^2+y^2=1\}$ is a regular surface, and find parametrizations whose
+coordinate neighborhoods cover it.
+
+\par
+\textbf{\textit{Solution.}}\\
+For each point $p = (x_0, y_0, z_0) \in S = \{(x,y,z) \in \mathbb{R}^3: x^2+y^2=1\}$, without loss of generality we can 
+assume that $y_0 > 0$, then let $q = (x_0, 0, z_0)$ and $U$ a sufficiently small neighborhood of $q$ in $xOz$ plane.
+Define $\mathcal{X}: U \to S$ by $\mathcal{X}(x,z)=(x,\sqrt{1-x^2}, z)$, it's clearly that
+$\mathcal{X}$ is differentiable, one-to-one, and its inverse is also continuous. Moreover,
+$$
+    d\mathcal{X} = 
+    \left(
+        \begin{array}{cc}
+            1 & 0\\\\
+            \dfrac{x}{\sqrt{1-x^2}} & 0\\\\
+            0 & 1
+        \end{array}
+    \right)
+$$
+has rank 2 at any point $(x_0, z_0)$. Thus $\mathcal{X}$ is a parametrization in $U$. \qedsymbol
+
+\par
+\textbf{2-2 Ex.9}\\
+Let $V$ be an open set in the $xy$ plane. Show that the set
+$$
+    \{(x,y,z) \in \mathbb{R}^3: z=0,(x,y) \in V\}
+$$
+is a regular surface.\\
+
+\par
+\textbf{\textit{Solution.}}\\
+Let $S$ denote the set above and define $\mathcal{X}: V \to S$ by
+$$
+    \mathcal{X}(x,y) = (x,y,0)
+$$
+Then it's easy to verify that $\mathcal{X}$ satisfies condition 1, 2 and 3. So $\mathcal{X}$ is
+a parametrization and $S$ is a regular surface. \qedsymbol
+
+\par
+\textbf{2-2 Ex.12}\\
+Show that $\mathcal{X}: U \subset \mathbb{R}^2 \to \mathbb{R}^3$ given by 
+$$
+    \mathcal{X}(u,v) = (a \sin u \cos v, b \sin u \sin v, c \cos u), a, b, c \neq 0,
+$$
+where $0<u<\pi$, $0<v<2 \pi$ is a parametrization for the ellipsoid
+$$
+    \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1
+$$
+Describe geometrically the curves $u = const.$ on the ellipsoid.\\
+
+\par
+\textbf{\textit{Solution.}}\\
+It's easy to see that $\mathcal{X}$ is a diffeomorphism, also note that
+$$
+    d\mathcal{X} = 
+    \left(
+        \begin{array}{cc}
+            a \cos u \cos v & -a \sin u \sin v\\\\
+            b \cos u \sin v & b \sin u \cos v\\\\
+            -c \sin u & 0
+        \end{array}
+    \right)
+$$
+always has rank 2 for all $u \in (0, \pi), v \in (0, 2 \pi)$. Therefore $\mathcal{X}$ is
+a parametrization.\\
+The curves $u = const.$ is a set of ellipses with axes $2a \sin u$ and $2b \sin u$. \qedsymbol
+
+\par
+\textbf{2-2 Ex.16}\\
+One way to define a system of coordinates for the sphere $S^2$, given by $x^2 + y^2 + (z-1)^2 = 1$,
+is to consider the so-called stereographic projection $\pi: S^2 / \{N\} \to \mathbb{R}^2$ which
+carries a point $p = (x,y,z)$ of the sphere $S^2$ minus the north pole $N = (0,0,2)$
+onto the intersection of the $xy$ plane with the straight line which connects $N$ to $p$.
+Let $(u,v) = \pi(x,y,z)$, where $(x,y,z) \in S^2 / \{N\}$ and $(u,v) \in xy$ plane.\\
+\textbf{a. }Show that $\pi^{-1}: \mathbb{R}^2 \to S^2$ is given by 
+$$
+    \pi^{-1} = 
+    \begin{cases}
+        x = \frac{4u}{u^2+v^2+4}\cr
+        y = \frac{4v}{u^2+v^2+4}\cr
+        z = \frac{2u^2+2v^2}{u^2+v^2+4}
+    \end{cases}
+$$
+\textbf{b. }Show that it is possible, using stereographic projection, to cover the sphere with
+two coordinate neighborhoods.
+
+\par
+\textbf{\textit{Solution.}}\\
+\textbf{a. }By definition of $\pi$, $(0,0,2), (x,y,z)$ and $(u,v,0)$ are in the same line. Hence we have
+$$
+    (x,y,z-2) = \lambda (u,v,-2), \lambda \in \mathbb{R}
+$$
+Also we know that $x^2 + y^2 + (z-1)^2 = 1$, it follows that
+$$
+    \lambda^2 u^2 + \lambda^2 v^2 + (2\lambda - 1)^2 = 1
+$$
+$$
+    \lambda^2 u^2 + \lambda^2 v^2 + 4\lambda^2 - 4\lambda = 0
+$$
+Note that $\lambda \neq 0$ because $(x,y,z) \neq N$, so we have
+$$
+    \lambda = \frac{4}{u^2+v^2+4}
+$$
+Therefore,
+$$
+    x = \lambda u = \frac{4u}{u^2+v^2+4}, y = \lambda v = \frac{4v}{u^2+v^2+4}, z = 2-2\lambda = \frac{2u^2+2v^2}{u^2+v^2+4} \qed
+$$
+
+\textbf{b. }The conclusion above shows that for each point $p$ in $S^2 / \{N\}$, we can find
+a corresponding parametrization. Particularly, for $p=N$, consider map $\mathcal{X}: B(0,1) \to S^2$ defined by
+$$
+    \mathcal{X}(x,y) = (x,y,1+\sqrt{1-x^2-y^2}), (x,y) \in B(0,1)
+$$
+where $B(0,1)$ is the unit ball in $\mathbb{R}^2$. It's easy to verify that $\mathcal{X}$ is a parametrization. Hence we can 
+cover $S^2$ using two coordinate neighborhoods. \qedsymbol
+
+\end{document}
