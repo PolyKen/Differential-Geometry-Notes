@@ -273,6 +273,29 @@ $$
 $$
 is a diffeomorphism.\\
 \textbf{\textit{Proof.}}\\
+It's clear that $h$ as a composition of two homeomorphisms is a homeomorphism.\\
+Let $r \in \mathcal{Y}^{-1}(W)$ and set $q = h(r)$. Since $\mathcal{X}(u,v) = (x(u,v), y(u,v), z(u,v))$ is a parametrization,
+we can assume, by renaming the axes if necessary, that
+$$
+    \frac{\partial (x,y)}{\partial (u,v)}(q) \neq 0
+$$
+Then, we extend $\mathcal{X}$ to a map $F: U \times \mathbb{R} \to \mathbb{R}^3$ defined by
+$$
+    F(u,v,t) = (x(u,v), y(u,v), z(u,v)+t), (u,v) \in U, t \in \mathbb{R}
+$$
+It's clear that $F$ is differentiable and that the restriction $F|_{U \times \{0\}} = \mathcal{X}$, note that
+$$
+    det(dF_q) = \frac{\partial (x,y)}{\partial (u,v)}(q) \neq 0
+$$
+So we can apply the inverse function theorem here:\\
+There exists a neighborhood of $\mathcal{X}(q)$$M \subset W$ and 
+
+\par
+\textbf{Definition 2.3}\\
+Let $f: V \subset S \to \mathbb{R}$ be a function defined in an open subset $V$ of a regular surface $S$. Then $f$ is said to be
+differentiable at $p \in V$ if, for some parametrization $\mathcal{X}: U \subset \mathbb{R}^2 \to S$ with $p \in \mathcal{X}(U) \subset V$, the 
+composition $f \circ \mathcal{X}: U \subset \mathbb{R}^2$ is differentiable at $\mathcal{X}^{-1}(p)$. $f$ is differentiable in $V$ if it is differentiable
+at all points of $V$.
 
 
 \end{document}

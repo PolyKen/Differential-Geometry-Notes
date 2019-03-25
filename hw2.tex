@@ -85,10 +85,10 @@ The curves $u = const.$ is a set of ellipses with axes $2a \sin u$ and $2b \sin 
 \par
 \textbf{2-2 Ex.16}\\
 One way to define a system of coordinates for the sphere $S^2$, given by $x^2 + y^2 + (z-1)^2 = 1$,
-is to consider the so-called stereographic projection $\pi: S^2 / \{N\} \to \mathbb{R}^2$ which
+is to consider the so-called stereographic projection $\pi: S^2 - \{N\} \to \mathbb{R}^2$ which
 carries a point $p = (x,y,z)$ of the sphere $S^2$ minus the north pole $N = (0,0,2)$
 onto the intersection of the $xy$ plane with the straight line which connects $N$ to $p$.
-Let $(u,v) = \pi(x,y,z)$, where $(x,y,z) \in S^2 / \{N\}$ and $(u,v) \in xy$ plane.\\
+Let $(u,v) = \pi(x,y,z)$, where $(x,y,z) \in S^2 - \{N\}$ and $(u,v) \in xy$ plane.\\
 \textbf{a. }Show that $\pi^{-1}: \mathbb{R}^2 \to S^2$ is given by 
 $$
     \pi^{-1} = 
@@ -103,7 +103,7 @@ two coordinate neighborhoods.
 
 \par
 \textbf{\textit{Solution.}}\\
-\textbf{a. }By definition of $\pi$, $(0,0,2), (x,y,z)$ and $(u,v,0)$ are in the same line. Hence we have
+\textbf{a. }By definition of $\pi$, $(0,0,2), (x,y,z)$ and $(u,v,0)$ are in the same line. Hence
 $$
     (x,y,z-2) = \lambda (u,v,-2), \lambda \in \mathbb{R}
 $$
@@ -120,15 +120,96 @@ $$
 $$
 Therefore,
 $$
-    x = \lambda u = \frac{4u}{u^2+v^2+4}, y = \lambda v = \frac{4v}{u^2+v^2+4}, z = 2-2\lambda = \frac{2u^2+2v^2}{u^2+v^2+4} \qed
+    x = \lambda u = \frac{4u}{u^2+v^2+4}, \quad y = \lambda v = \frac{4v}{u^2+v^2+4}, \quad z = 2-2\lambda = \frac{2u^2+2v^2}{u^2+v^2+4} \qed
 $$
 
-\textbf{b. }The conclusion above shows that for each point $p$ in $S^2 / \{N\}$, we can find
+\textbf{b. }The conclusion above shows that for each point $p$ in $S^2 - \{N\}$, we can find
 a corresponding parametrization. Particularly, for $p=N$, consider map $\mathcal{X}: B(0,1) \to S^2$ defined by
 $$
     \mathcal{X}(x,y) = (x,y,1+\sqrt{1-x^2-y^2}), (x,y) \in B(0,1)
 $$
 where $B(0,1)$ is the unit ball in $\mathbb{R}^2$. It's easy to verify that $\mathcal{X}$ is a parametrization. Hence we can 
 cover $S^2$ using two coordinate neighborhoods. \qedsymbol
+
+\par
+\textbf{2-3 Ex.3}\\
+Show that the paraboloid $z = x^2 + y^2$ is diffeomorphic to a plane.
+
+\par
+\textbf{\textit{Solution.}}\\
+Let $S$ denote the paraboloid. Consider map $\mathcal{X}: \mathbb{R}^2 \to S$:\\
+$$
+    \mathcal{X}(x,y) = (x,y,x^2+y^2)
+$$
+whose inverse is $\pi |_{S}: S \to \mathbb{R}^2$ and it's easy to verify that both of them are differentiable. \qedsymbol
+
+\par
+\textbf{2-3 Ex.6}\\
+Prove that the definition of a differentiable map between surfaces does not depend on the parametrizations chosen.
+
+\par
+\textbf{\textit{Solution.}}\\
+We know that if $\mathcal{X}$ and $\mathcal{Y}$ are both parametrizations of a regular surface, then
+$$
+    \mathcal{X}^{-1} \circ \mathcal{Y}
+$$
+is a diffeomorphism.\\
+If $\phi$ is a differentiable map between two regular surface $S_1$ and $S_2$, then
+there exists two parametrizations $\mathcal{X}_1, \mathcal{X}_2$ of two regular surfaces respectively and
+$$
+    \mathcal{X}_2^{-1} \circ \phi \circ \mathcal{X}_1
+$$
+is a differentiable. Suppose that $\mathcal{Y}_1, \mathcal{Y}_2$ are another two parametrizations of $S_1, S_2$ respectively,
+then both $\mathcal{Y}_2^{-1} \circ \mathcal{X}_2$ and $\mathcal{X}_1^{-1} \circ \mathcal{Y}_1$ are diffeomorphism so that 
+$$
+    \mathcal{Y}_2^{-1} \circ \phi \circ \mathcal{Y}_1 = \mathcal{Y}_2^{-1} \circ \mathcal{X}_2 \circ \mathcal{X}_2^{-1} \circ \phi \circ \mathcal{X}_1 \circ \mathcal{X}_1^{-1}
+$$
+is also a diffeomorphism, which shows that the differentiable map between surfaces is well-defined. \qedsymbol
+
+\par
+\textbf{2-3 Ex.10}\\
+Let $C$ be a plane regular curve which lies in one side of a straight line $r$ of the plane and meets $r$ at the points $p,q$.
+What conditions should $C$ satisfy to ensure that the rotation of $C$ about $r$ generates an extended (regular) surface of revolution.
+
+\par
+\textbf{\textit{Solution.}}\\
+$C$ should be smooth and the tangent vector at $p,q$ should be perpendicular to the straight line $r$.
+
+\par
+\textbf{2-3 Ex.14}\\
+Let $A \subset S$ be a subset of a regular surface $S$. Prove that $A$ is itself a regular surface if and only if $A$ is open
+in $S$, that is, $A = U \cap S$, where $U$ is an open set in $\mathbb{R}^3$.
+
+\par
+\textbf{\textit{Solution.}}\\
+$"\Rightarrow"$:\\
+Given that $A$ is a regular surface, then for each $p \in A$, we can find a neighborhood $V \subset S$ of $p$ thus $A$ is open.\\
+$"\Leftarrow"$:\\
+Assume that $A$ is open. Since we know that $S$ is a regular surface, for each point $p \in A \subset S$, we can find a neighborhood $V$
+of $p$ in $S$ and we can always assume that $V$ is sufficiently small such that it is contained in $A$. Also there exists $U \subset \mathbb{R}^2$
+and an onto map $\mathcal{X}: U \to V$ satisfying 3 conditions therefore $A$ is also a regular surface. \qedsymbol
+
+\par
+\textbf{2-3 Ex.16}\\
+Let $\mathbb{R}^2 = \{(x,y,z) \in \mathbb{R}^3: z = -1\}$ be identified with the complex plane $\mathbb{C}$ by setting $(x,y,-1)=x+iy=\zeta \in \mathbb{C}$.
+Let $P: \mathbb{C} \to \mathbb{C}$ be the complex polynomial
+$$
+    P(\zeta) = a_0 \zeta^n + a_1 \zeta^{n-1} + ... + a_n, a_0 \neq 0, a_i \in \mathbb{C}, i=0,...,n
+$$
+Denote by $\pi_N$ the stereographic projection on $S^2 = \{(x,y,z) \in \mathbb{R}^3: x^2+y^2+z^2=1\}$ from the north pole $N=(0,0,1)$
+onto $\mathbb{R}^2$. Prove that the map $F: S^2 \to S^2$ given by
+$$
+    F(p) = \pi_N^{-1} \circ P \circ \pi_N(p), \text{ if } p \in S^2 - \{N\}
+$$
+$$
+    F(N) = N
+$$
+is differentiable.
+
+\par
+\textbf{\textit{Solution.}}\\
+By the conclusion of \textbf{2-2 Ex.16} we know that $\pi_N$ is a parametrization of $S^2 - \{N\}$ and $\pi_N^{-1}$ is also differentiable, so it suffices to 
+verify that $F$ is differentiable at $N$.
+
 
 \end{document}
