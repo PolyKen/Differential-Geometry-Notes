@@ -1,0 +1,492 @@
+\documentclass{article}
+
+\usepackage{changepage,aligned-overset,amsfonts,amssymb,amsthm,enumerate,geometry}
+\usepackage{xeCJK}
+\geometry{a4paper, scale = 0.8}
+\setCJKmainfont{STSong}
+\begin{document}
+%\author{谢铮 15338200}
+\title{Homework 3}
+\date{Mar 22, 2019}
+\maketitle
+
+\setlength\parindent{0em}   % cancel all indent
+\setlength\parskip{1.0\baselineskip} % set skip between paragraphs
+
+\par
+\textbf{2-3 Ex.3}\\
+Show that the paraboloid $z=x^2+y^2$ is diffeomorphic to a plane.
+
+\par
+\textbf{\textit{Solution.}}\\
+Consider map
+$$
+    \mathcal{X}(u,v)=(u,v,u^2+v^2)
+$$
+It's easy to see that $\mathcal{X}$ is differentiable, bijective, and 
+$\frac{\partial{(u,v)}}{\partial{(u,v)}}=1$, so it suffices to show that
+$\mathcal{X}^{-1}$ is continuous. Since $\mathcal{X}^{-1}$ can
+be seen as a restriction of $\pi: \mathbb{R}^3 \to \mathbb{R}^2$ to 
+$S=\{(x,y,z):z=x^2+y^2\}$, $\mathcal{X}^{-1}$ is also continuous. \qed
+
+\par
+\textbf{2-3 Ex.6}\\
+Prove that the definition of a differentiable map between surfaces does
+not depend on the parametrizations chosen.
+
+\par
+\textbf{\textit{Solution.}}\\
+Suppose $\phi: S_1 \to S_2$ is a differentiable map where $S_1, S_2$ are
+regular surfaces. By definition we know that given $p \in S_1$,
+there exists open
+sets $q \in U \subset \mathbb{R}^2$, 
+$\bar{q} \in \bar{U} \subset \mathbb{R}^2$
+and parametrizations $\mathcal{X}: U \to V \cap S_1$,
+$\bar{\mathcal{X}}: \bar{U} \to V \cap S_2$
+such that $p = \mathcal{X}(q), \phi(p) = \bar{\mathcal{X}}(\bar{q})$
+and $f=\bar{\mathcal{X}}^{-1} \circ \phi \circ \mathcal{X}$
+is differentiable at $q$.\\
+Note that for $p \in S_1$ and $\phi(p) \in S_2$, we can find
+another two parametrizations $\mathcal{Y}$ and $\bar{\mathcal{Y}}$
+of $S_1$ at $p$ and $S_2$ at $\phi(p)$ respectively and
+moreover,
+$\mathcal{X} \circ \mathcal{Y}^{-1}$ and
+$\bar{\mathcal{Y}} \circ \bar{\mathcal{X}}^{-1}$ are both
+diffeomorphism. Therefore
+$$
+    g = \bar{\mathcal{Y}}^{-1} \circ \phi \circ \mathcal{Y}
+$$
+is also differentiable at $q$, which implies that the 
+definition doesn't depend on the parametrizations chosen. \qed
+
+\par
+\textbf{2-3 Ex.10}\\
+Let $C$ be a plane regular curve which lies in one side of
+a straight line $r$ of the plane and meets $r$ at the points
+$p,q$. What conditions should $C$ satisfy to ensure that the
+rotation of $C$ about $r$ generates an extended regular
+surface of revolution?
+
+\par
+\textbf{\textit{Solution.}}\\
+For simplicity, we can assume that $C$ is parametrized by
+$$
+    \alpha: [0,1] \to C
+$$
+and $r$ is the rotation axis.
+where $\alpha$ is smooth and injective(hence $C$ is simple).
+$\alpha(t)=(\alpha_1(t), \alpha_2(t))$.
+and $\alpha(0)=p, \alpha(1)=q$.\\
+We have known that the surface of revolution denoted by $S$
+is regular outside $p,q$ since $C$ is regular. Now assume
+that $S$ is also regular at $p$ and $q$. We shall notice that
+the tangent plane of $S$ at $p,q$, denoted by $T_p(S)$ and
+$T_q(S)$ respectively, should stay invariant under rotation
+$$
+    R = 
+    \left(
+    \begin{array}{ccc}
+        1 & 0 & 0\\
+        0 & \cos(\theta) & -\sin(\theta)\\
+        0 & \sin(\theta) & \cos(\theta)
+    \end{array}
+    \right)
+$$
+Therefore, the equation of $T_p(S)$ is given by
+$$
+    x = \alpha_1(0)
+$$
+Then let $\tilde{C}=S\cap \{z=0\}$, naturally we can also
+find a parametrization of $\tilde{C}$ by
+$$
+    \tilde{\alpha}(t)
+    =
+    \begin{cases}
+        (\alpha_1(t), \alpha_2(t)),\quad t \geq 0\\
+        (\alpha_1(-t), -\alpha_2(-t)), \quad t \leq 0
+    \end{cases}
+$$
+
+\par
+\textbf{2-3 Ex.14}\\
+Let $A \subset S$ be a subset of a regular surface $S$.
+Prove that $A$ is itself a regular surface if and only if
+$A$ is open in $S$, that is, $A = U \cap S$, where $U$ is
+an open set in $\mathbb{R}^3$.
+
+\par
+\textbf{\textit{Solution.}}\\
+$"\Rightarrow":$\\
+Suppose $A$ is a regular surface.\\
+$"\Leftarrow":$\\
+Suppose $A$ is open in $S$, then there exists 
+$U \subset \mathbb{R}^3$ such that $A = U \cap S$
+where $U$ is an open set.\\
+For each point $p \in A \subset S$, there exists
+a parametrization $\mathcal{X}: O \to W \cap S$
+satisfying three conditions since $S$ is a regular
+surface. Note that $U$ is open so we can assume that
+$W$ is sufficiently small such that $W$ is contained
+in $A=W\cap S$. Hence $A$ is also a regular surface.
+
+\par
+\textbf{2-3 Ex.16}\\
+Let $\mathbb{R}^2=\{(x,y,z)\in \mathbb{R}^3:z=-1\}$
+be identified with the complex plane $\mathbb{C}$
+by setting $(x,y,-1)=x+iy=\xi \in \mathbb{C}$,
+let $P:\mathbb{C}\to \mathbb{C}$ be the complex
+polynomial
+$$
+P(\xi)=a_0 \xi^n + a_1 \xi^{n-1} + ... + a_n
+$$
+where $a_0 \neq 0, a_i \in \mathbb{C}$.
+Denote by $\pi_N$ the stereographic projection of
+$S^2=\{(x,y,z)\in \mathbb{R}^3: x^2+y^2+z^2=1\}$
+from the north pole $N=(0,0,1)$ onto $\mathbb{R}^2$.
+Prove that the map $F:S^2 \to S^2$ given by
+$$
+    F(p)=\pi_N^{-1} \circ P \circ \pi_N(p), \forall p \in S^2 - \{N\}
+$$
+$$
+    F(N)=N
+$$
+is differentiable.
+
+\par
+\textbf{\textit{Solution.}}\\
+For $p \in S^2-\{N\}$, it's easy to verify that $F$ is 
+differentiable at $p$ since $\pi_N$ is a diffeomorphism
+and $P$ is holomorphic.\\
+Consider map $G: \mathbb{C} \to \mathbb{C}$ given by
+$$
+    G(p)=\pi_S \circ \pi_N^{-1} \circ P \circ \pi_N \circ \pi_S^{-1}(p)
+$$
+where $\pi_S$ is defined similar to $\pi_N$\\
+It suffices to show that $G$ is differentiable at $0$.\\
+First observe that 
+$$
+    \pi_N \circ \pi_S^{-1}(\xi)=\frac{1}{\bar{\xi}}, \quad
+    \pi_S \circ \pi_N^{-1}(\eta) = \frac{1}{\bar{\eta}}
+$$
+Hence
+$$
+\begin{aligned}
+    G(\xi)&=\frac{1}{\overline{P\circ \pi_N \circ \pi_S^{-1}(\xi)}}=\frac{1}{\overline{P(\frac{1}{\bar{\xi}})}}\\
+    &=\frac{1}{P(\frac{1}{\xi})} = \frac{1}{a_0\xi^n+a_1\xi^{n-1}+...+a_n}=\frac{\xi^n}{a_0+a_1\xi+...+a_n\xi^n}
+\end{aligned}
+$$
+which is differentiable at $0$.\\
+Then, since $\pi_S$ is a diffeomorphism,
+$$
+    F(p) = \pi_S^{-1} \circ G \circ \pi_S
+$$
+is differentiable at $N$. \qed
+
+\par
+\textbf{2-4 Ex.1}\\
+Show that the equation of the tangent plane at $(x_0,y_0,z_0)$
+of a regular surface given by $f(x,y,z)=0$,where $0$ is a
+regular value of $f$,is
+$$
+    f_x(x_0,y_0,z_0)(x-x_0)+f_y(x_0,y_0,z_0)(y-y_0)+f_z(x_0,y_0,z_0)(z-z_0)=0
+$$
+
+\par
+\textbf{\textit{Solution.}}\\
+Suppose $w$ is a tangent vector of $S=f^{-1}(0)$ at $p=(x_0,y_0,z_0)$
+and $\alpha: (-\epsilon, \epsilon) \to S$ is a differentiable
+curve such that $\alpha(0)=p$, $\alpha'(0)=w$. Let
+$g=f\circ \alpha$, then $g(t)=f(\alpha(t))=0$ for all $t$.
+Hence $g'(0)=(f_x(p),f_y(p),f_z(p)) \cdot w = 0$.
+Since $w$ is arbitrary, it follows that the equation of the
+tangent plane is
+$$
+    f_x(p)(x-x_0)+f_y(p)(y-y_0)+f_z(p)(z-z_0)=0
+$$
+\qed
+
+\par
+\textbf{2-4 Ex.2}\\
+Determine the tangent planes of $x^2+y^2-z^2=1$ at the points
+$(x,y,0)$ and show that they are all parallel to the $z$
+axis.
+
+\par
+\textbf{\textit{Solution.}}\\
+Using the conclusion above we know that the equation of
+the tangent plane at $(x_0,y_0,0)$ is
+$$
+    x_0x+y_0y-1=0
+$$
+Thus the normal vector of the tangent plane is $(x_0,y_0,0)$,
+which is normal to $(0,0,1)$, hence $z$ axis is parallel to
+the tangent plane at $(x_0,y_0,0)$ for all $x_0,y_0$. \qed
+
+\par
+\textbf{2-4 Ex.13}\\
+A critical point of a differentiable function $f: S \to \mathbb{R}$
+defined on a regular surface $S$ is a point $p \in S$ such
+that $df_p=0$.
+
+\par
+\textbf{a. }Let $f:S\to \mathbb{R}$ be given by $f(p)=|p-p_0|$,
+$p \in S$, $p_0 \notin S$. Show that $p$ is a critical point
+of $f$ if and only if the line joining $p$ and $p_0$ is
+normal to $S$ at $p$.\\
+\textbf{b. }Let $h:S \to \mathbb{R}$ be given by $h(p)=p \cdot v$,
+where $v \in \mathbb{R}^3$ is a unit vector. Show that $p \in S$
+is a critical point of $f$ if and only if $v$ is a normal
+vector of $S$ at $p$.
+
+\par
+\textbf{\textit{Solution.}}\\
+\textbf{a. }Suppose $p$ is a critical point, then for each $w \in T_p(S)$
+$$
+    df_p(w)=(\frac{x-x_0}{|p-p_0|}, \frac{y-y_0}{|p-p_0|}, \frac{z-z_0}{|p-p_0|})(w)=\frac{p-p_0}{|p-p_0|}(w)=0
+$$
+Thus $p-p_0$ is penpendicular to $T_p(S)$ and also $S$.\\
+It's easy to verify inversely. \qed
+
+\textbf{b. }\\
+Observe that
+$$
+    dh_p(w) = <v,w>, w \in T_p(S)
+$$
+It follows that $dh_p=0$ if and only if $v$ is a normal
+vector of $S$ at $p$.
+
+\par
+\textbf{2-4 Ex.15}\\
+Show that if all normals to a connected surface pass through
+a fixed point, the surface is contained in a sphere.
+
+\par
+\textbf{\textit{Soluiton.}}\\
+Suppose the fixed point is denoted by $p_0$, then for each 
+point $p \in S$, $p-p_0$ is normal to $T_p(S)$.\\
+Let $f(p)=|p-p_0|^2$, then
+$$
+    df_p(w)=2(p-p_0)(w)=0, \forall w \in T_p(S)
+$$
+Then we show that $f(p)=C$, for each $p_1,p_2 \in S$,
+we can find a curve $\alpha: I \to S$ such that
+$\alpha(t_1)=p_1, \alpha(t_2)=p_2$. Consider
+$g = f \circ \alpha$, then
+$$
+    g(t_2)-g(t_1) = \int_{t_1}^{t_2}g'(t)dt
+$$
+Since $g'(t)=df_{\alpha(t)}(\alpha'(t)) = 0$ for all $t \in I$.
+Therefore $g(t_1)=g(t_2)$, i.e. $f(p_1)=f(p_2)$.
+Hence $f(p)=C$ for some constant $C$, which implies that
+$S \subset \{p\in \mathbb{R}^3:|p-p_0|^2=C\}$. \qed
+
+\par
+\textbf{2-4 Ex.16}\\
+Let $w$ be a tangent vector to a regular surface $S$ at a
+point $p \in S$ and let $\mathcal{X}(u,v)$ and $\bar{\mathcal{X}}(\bar{u}, \bar{v})$
+be two parametrizations at $p$. Suppose that the
+expressions of $w$ in the bases associated to $\mathcal{X}(u,v)$
+and $\bar{\mathcal{X}}(\bar{u}, \bar{v})$ are
+$$
+    w = \alpha_1 \mathcal{X}_u + \alpha_2 \mathcal{X}_v
+$$
+and
+$$
+    w = \beta_1 \bar{\mathcal{X}}_{\bar{u}} +\beta_2 \bar{\mathcal{X}}_{\bar{v}}
+$$
+Show that the coordinates of $w$ are related by
+$$
+    \beta_1 = \alpha_1 \frac{\partial{\bar{u}}}{\partial{u}} + \alpha_2 \frac{\partial{\bar{u}}}{\partial{v}}
+$$
+$$
+    \beta_2 = \alpha_1 \frac{\partial{\bar{v}}}{\partial{u}} + \alpha_2 \frac{\partial{\bar{v}}}{\partial{v}}
+$$
+where $\bar{u}=\bar{u}(u,v)$ and $\bar{v}=\bar{v}(u,v)$
+are the expressions of the change of coordinates.
+
+\par
+\textbf{\textit{Solution.}}\\
+Note that
+$$
+    (\mathcal{X}_u, \mathcal{X}_v)
+    =(\mathcal{\bar{X}}_{\bar{u}},\mathcal{\bar{X}}_{\bar{v}})
+    \cdot
+    \left(
+        \begin{array}{cc}
+            \dfrac{\partial{\bar{u}}}{\partial{u}} &\dfrac{\partial{\bar{u}}}{\partial{v}}\\\\
+            \dfrac{\partial{\bar{v}}}{\partial{u}} &\dfrac{\partial{\bar{v}}}{\partial{v}}
+        \end{array}
+    \right)
+$$
+Hence
+$$
+(\mathcal{\bar{X}}_{\bar{u}}, \mathcal{\bar{X}}_{\bar{v}}) \cdot 
+\left(
+    \begin{array}{c}
+        \beta_1\\\\
+        \beta_2
+    \end{array}
+\right)
+=
+(\mathcal{X}_u, \mathcal{X}_v) \cdot 
+\left(
+    \begin{array}{c}
+        \alpha_1\\\\
+        \alpha_2
+    \end{array}
+\right)
+=
+(\mathcal{\bar{X}}_{\bar{u}},\mathcal{\bar{X}}_{\bar{v}})
+    \cdot
+    \left(
+        \begin{array}{cc}
+            \dfrac{\partial{\bar{u}}}{\partial{u}} &\dfrac{\partial{\bar{u}}}{\partial{v}}\\\\
+            \dfrac{\partial{\bar{v}}}{\partial{u}} &\dfrac{\partial{\bar{v}}}{\partial{v}}
+        \end{array}
+    \right)
+    \cdot
+    \left(
+    \begin{array}{c}
+        \alpha_1\\\\
+        \alpha_2
+    \end{array}
+\right)
+$$
+Therefore,
+$$
+\left(
+    \begin{array}{c}
+        \beta_1\\\\
+        \beta_2
+    \end{array}
+\right)=
+\left(
+        \begin{array}{cc}
+            \dfrac{\partial{\bar{u}}}{\partial{u}} &\dfrac{\partial{\bar{u}}}{\partial{v}}\\\\
+            \dfrac{\partial{\bar{v}}}{\partial{u}} &\dfrac{\partial{\bar{v}}}{\partial{v}}
+        \end{array}
+    \right)
+    \cdot
+    \left(
+    \begin{array}{c}
+        \alpha_1\\\\
+        \alpha_2
+    \end{array}
+\right)
+$$
+
+\par
+\textbf{2-4 Ex.18}\\
+Prove that if a regular surface $S$ meets a plane $P$ in a
+single point $p$, then this plane coincides with the tangent
+plane of $S$ at $p$.
+
+\par
+\textbf{\textit{Solution.}}\\
+Suppose the normal vector of $P$ is $n=(a,b,c)\neq 0$.
+Then let $f(q)=(q-p)\cdot n$, where $q \in S$.
+
+Assume that $df_p \neq 0$, then there exists some $w \in T_p(S)$
+such that $df_p(w) \neq 0$, then we can find $\beta: (-\epsilon, \epsilon) to S$
+such that $\beta(0)=p$, $\beta'(0)=w$, let $h = f \circ \beta$,
+then $h'(0) = df_p(w) \neq 0$, thus by inverse function theorem,
+there exists $t_1, t_2 \in (-\epsilon, \epsilon)$ such that
+$h(t_1)h(t_2)<0$. Hence there exists some $t_0$ such that
+$h(t_0)=0$. Since $h$ is arbitrary, there are more than one
+point in $P \cap S$, leading a contradiction.
+
+Hence $df(p)=0$.
+Now for each $w \in T_p(S)$, we can find a curve
+$\alpha: (-\epsilon, \epsilon) \to S$ such that 
+$\alpha(0)=p, \alpha'(0)=w$.
+Now let $g = f \circ \alpha$, then 
+$g: (-\epsilon, \epsilon) \to S$ is a differentiable
+function and
+$$
+    g'(0) = \frac{d}{dt}f(\alpha(t))|_{t=0}
+    = n \cdot \alpha'(0) = n \cdot w = 0
+$$
+Therefore $n$ is perpendicular to $Tp(S)$, which implies
+that $P$ is $T_p(S)$ exactly.\qed
+
+\par
+\textbf{2-4 Ex.19}\\
+Let $S \subset \mathbb{R}^3$ be a regular surface and
+$P \subset \mathbb{R}^3$ be a plane. If all points of $S$
+are on the same side of $P$, prove that $P$ is tangent to 
+$S$ at all points of $P \cap S$.
+
+\par
+\textbf{\textit{Solution.}}\\
+Similarly, given $p \in S \cap P$, define
+$$
+    f(q) = (q-p) \cdot n
+$$
+where $n$ is the normal vector of $P$.
+Since we know that $S$ is on one side of $P$, without loss
+of generality we can assume that $f(q) \geq 0$ for all $q \in S$.\\
+For each $p_0 \in S \cap P$, we have 
+$f(p_0)=(p_0-p) \cdot n = 0$. It can derive that
+$df_{p_0}=0$, otherwise
+by inverse function theorem we could find some $q$ such that
+$f(q) < 0$.\\
+Now pick $w \in T_{p_0}(S)$, we can find a curve $\alpha: (-\epsilon, \epsilon) \to S$
+such that $\alpha(0) = p_0$, $\alpha'(0) = w$.\\
+Let $g = f \circ \alpha$, then 
+$$
+g'(0) = df_{p_0}(w) = n \cdot w = 0
+$$
+Since $p_0$ is arbitrary, $n$ is the normal vector of tangent planes at all
+points of $P \cap S$. \qed
+
+\par
+\textbf{2-4 Ex.24}\\
+(Chain Rule.)Show that if $\phi: S_1 \to S_2$ and 
+$\psi: S_2 \to S_3$ are differentiable maps and $p \in S_1$,
+then
+$$
+    d(\psi \circ \phi)_p = d \psi_{\phi(p)} \circ d \phi_p
+$$
+
+\par
+\textbf{\textit{Solution.}}\\
+For each $w \in T_p(S_1)$, we can find a curve
+$\alpha: (-\epsilon, \epsilon) \to S_1$ such that
+$\alpha(0)=p$, $\alpha'(0)=w$, let $\beta = \phi \circ \alpha$,
+$\gamma = \psi \circ \beta$.
+By definition of differential,
+$$
+    \gamma'(0) = d(\psi \circ \phi)_p(w) = d\psi_{\beta(0)}(\beta'(0))
+$$
+$$
+    \beta'(0) = d\phi_p(w), \beta(0)=\phi(\alpha(0))=\phi(p)
+$$
+Hence
+$$
+d(\psi \circ \phi)_p(w) = d\psi_{\phi(p)}(d\phi_p(w))
+$$
+i.e.
+$$
+d(\psi \circ \phi)_p = d\psi_{\phi(p)} \circ d\phi_p
+$$
+\qed
+
+\par
+\textbf{2-5 Ex.1(a)}\\
+Compute the first fundamental form of the following
+regular surface:
+$$
+\mathcal{X}(u,v)=(a \sin u \cos v, b \sin u \sin v, c \cos u)
+$$
+
+\par
+\textbf{\textit{Solution.}}\\
+$$
+    \mathcal{X}_u = (a \cos u \cos v, b \cos u \sin v, -c \sin u)
+$$
+$$
+    \mathcal{X}_v = (-a \sin u \sin v, b \sin u \cos v, c \cos u)
+$$
+E
+
+\end{document}

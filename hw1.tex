@@ -5,7 +5,7 @@
 \geometry{a4paper, scale = 0.8}
 \setCJKmainfont{STSong}
 \begin{document}
-\author{谢铮 15338200}
+%\author{谢铮 15338200}
 \title{Homework 1}
 \date{Mar 1, 2019}
 \maketitle
@@ -403,7 +403,7 @@ $$
 Thus
 $$
 \begin{aligned}
-    |\alpha'(t) \wedge \alpha''(t)| &= |(\beta'(s)\frac{ds}{dt} \wedge (\beta''(s)\frac{ds}{dt})^2)| \\
+    |\alpha'(t) \wedge \alpha''(t)| &= |\beta'(s)\frac{ds}{dt} \wedge \beta''(s)(\frac{ds}{dt})^2| \\
     &= (\frac{ds}{dt})^3 \cdot |\beta'(s) \wedge \beta''(s)|\\
     &= (|\alpha'(t)|)^3 \cdot k_{\beta}(s(t)) \\
     &= (|\alpha'(t)|)^3 \cdot k_{\alpha}(t)
@@ -414,12 +414,35 @@ $$
     k(t) = k_{\alpha}(t) = \frac{|\alpha' \wedge \alpha''|}{|\alpha'|^3} \quad \qedsymbol
 $$
 \\
-\textbf{c. }
+\textbf{c.}
+First note that
+$$
+    \begin{aligned}
+        \alpha'(t) &= |\alpha'| \beta'(s)\\
+        \alpha''(t) &=  |\alpha'|^2 \beta''(s) + C_1 \beta'(s)\\
+        \alpha'''(t) &= |\alpha'|^3 \beta'''(s) + C_2' \beta''(s) + C_1' \beta'(s)
+    \end{aligned}
+$$
+Hence
+$$
+\begin{aligned}
+    \beta'(s) \wedge \beta''(s) \cdot \beta'''(s) &= \frac{\alpha'(t)}{|\alpha'|} \wedge (\frac{\alpha''(t)}{|\alpha'|^2} + \tilde{C_1} \alpha'(s)) \cdot (\frac{\alpha'''(t)}{|\alpha'|^3} + \tilde{C_2}\alpha''(s) + \tilde{C_1}\alpha'(s)) \\
+    &=\frac{\alpha'(t)}{|\alpha'|} \wedge \frac{\alpha''(t)}{|\alpha'|^2} \cdot \frac{\alpha'''(t)}{|\alpha'|^3}
+\end{aligned}
+$$
+On the other hand,
+$$
+\begin{aligned}
+    |k_{\beta}(s)|^2 &= |\beta'(s) \wedge \beta''(s)|^2 \\
+    &= |\frac{\alpha'(t)}{|\alpha'|} \wedge \frac{\alpha''(t)}{|\alpha'|^2}|^2\\
+    &= \frac{|\alpha'(t) \wedge \alpha''(t)|^2}{|\alpha'|^6}
+\end{aligned}
+$$
+Then, by the conclusion of Ex.2
 $$
 \begin{aligned}
     \tau_{\alpha}(t) = \tau_{\beta}(s(t)) &=-\frac{\beta'(s) \wedge \beta''(s) \cdot \beta'''(s)}{|k_{\beta}(s)|^2}\\
-    &= -\frac{|\beta'(s)|^6 \cdot (\beta'(s) \wedge \beta''(s)) \cdot \beta'''(s)}{|\beta'(s) \wedge \beta''(s)|^2}\\
-    &= -\frac{(\frac{\alpha'}{|\alpha'|} \wedge \frac{\alpha''}{|\alpha'|^2}) \cdot \frac{\alpha'''}{|\alpha'|^3}}{|\frac{\alpha'}{|\alpha'|} \wedge \frac{\alpha''}{|\alpha''|}|^2}\\
+    &= -\frac{|\alpha'|^6 \cdot (\frac{\alpha'(t)}{|\alpha'|} \wedge \frac{\alpha''(t)}{|\alpha'|^2}) \cdot \frac{\alpha'''(t)}{|\alpha'|^3}}{|\alpha'(t) \wedge \alpha''(t)|^2}\\
     &= -\frac{(\alpha' \wedge \alpha'') \cdot \alpha'''}{|\alpha' \wedge \alpha''|^2} \quad \qedsymbol
 \end{aligned}
 $$
