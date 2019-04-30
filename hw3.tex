@@ -161,7 +161,7 @@ Consider map $G: \mathbb{C} \to \mathbb{C}$ given by
 $$
     G(p)=\pi_S \circ \pi_N^{-1} \circ P \circ \pi_N \circ \pi_S^{-1}(p)
 $$
-where $\pi_S$ is defined similar to $\pi_N$\\
+where $\pi_S$ is defined similar to $\pi_N$.\\
 It suffices to show that $G$ is differentiable at $0$.\\
 First observe that 
 $$
@@ -485,8 +485,214 @@ $$
     \mathcal{X}_u = (a \cos u \cos v, b \cos u \sin v, -c \sin u)
 $$
 $$
-    \mathcal{X}_v = (-a \sin u \sin v, b \sin u \cos v, c \cos u)
+    \mathcal{X}_v = (-a \sin u \sin v, b \sin u \cos v, 0)
 $$
-E
+$$
+    E(u,v)=a^2 \cos^2 u \cos^2 v + b^2 \cos^2 u \sin^2 v + c^2 \sin^2 u
+$$
+$$
+    F(u,v)=-a^2 \sin u \cos u \sin v \cos v + b^2 \sin u \cos u \sin v \cos v = \frac{b^2-a^2}{4}\sin 2u \sin 2v
+$$
+$$
+    G(u,v)=a^2 \sin^2 u \sin^2 v + b^2 \sin^2 u \cos^2 v
+$$
+
+\par
+\textbf{2-5 Ex.3}\\
+Obtain the first fundamental form of the sphere in the
+parametrization given by stereographic projection.
+
+\par
+\textbf{\textit{Solution.}}
+$$
+    E(u,v)=G(u,v)=\frac{16}{(u^2+v^2+4)^2}, F(u,v)=0
+$$
+
+\par
+\textbf{2-5 Ex.5}\\
+Show that the area $A$ of a bounded region $R$ of the surface
+$z=f(x,y)$ is
+$$
+    A = \iint_{Q}\sqrt{1+f_x^2+f_y^2}dxdy
+$$
+where $Q$ is the normal projection of $R$ onto the $xy$ plane.
+
+\par
+\textbf{\textit{Solution.}}\\
+It's easy to see that
+$$
+    \mathcal{X}_x(x,y) = (1, 0, f_x(x,y)), \mathcal{X}_y(x,y) = (0, 1, f_y(x,y))
+$$
+Hence $E(x,y)=1+f_x^2, \quad F(x,y)=f_xf_y, \quad G(x,y)=1+f_y^2$.
+$$
+A = \iint_Q\sqrt{EG-F^2}dxdy = \iint_Q\sqrt{1+f_x^2+f_y^2}dxdy
+$$
+\qed
+
+\par
+\textbf{2-5 Ex.9}\\
+Show that a surface of revolution can always be parametrized
+so that $E=E(v)$, $F=0$, $G=1$.
+
+\par
+\textbf{\textit{Solution.}}\\
+Without loss of generality, assume that the rotation axis is
+$z$ and the curve, located in $xz$ plane, is given by 
+$\alpha: I \to C$,
+$$
+    \alpha(v) = (f(v), g(v))
+$$
+and we can always assume that $\alpha$ is parametrized by 
+arc length.
+Then the surface can be parametrized by
+$$
+    \mathcal{X}(v,t) = (f(v)\cos t, f(v) \sin t, g(v))
+$$
+Then, $\mathcal{X}_t = (-f(v)\sin t, f(v) \cos t, 0)$,
+$\mathcal{X}_v = (f'(v)\cos t, f'(v) \sin t, g'(v))$\\
+Hence we have
+$$
+    E=f^2(v)\sin^2t+f^2(v)\cos^2t=f^2(v)
+$$
+$$
+    F = -f(v)f'(v)\sin t \cos t + f(v)f'(v) \sin t \cos t = 0
+$$
+$$
+    G=[f'(v)]^2+[g'(v)]^2=1
+$$
+\qed
+
+\par
+\textbf{2-5 Ex.10}\\
+Let $P = \{(x,y,z) \in \mathbb{R}^3:z=0\}$ be the $xy$ plane
+and let $\mathcal{X}: U \to P$ be a parametrization of $P$
+given by
+$$
+    \mathcal{X}(\rho, \theta) = (\rho \cos \theta, \rho \sin \theta)
+$$
+
+\par
+\textbf{2-5 Ex.11}\\
+Let $S$ be a surface of revolution and $C$ its generating
+curve. Let $s$ be the arc length of $C$ and denote by
+$\rho=\rho(s)$ the distance to the rotation axis of the point
+of $C$ corresponding to $s$.
+
+\par
+\textbf{a. }(Pappus' Theorem)Show that the area of $S$ is
+$$
+    2 \pi \int_0^l \rho(s)ds
+$$
+\textbf{b. }Apply part \textbf{a.} to compute the area of a
+torus of revolution.
+
+\par
+\textbf{\textit{Solution.}}\\
+\textbf{a. }Consider parametrization 
+$\mathcal{X}(s, \theta)=(\rho(s) \cos \theta, \rho(s) \sin \theta, h(s))$,\\
+Then
+$$
+    \mathcal{X}_s = (\rho'(s)\cos \theta, \rho'(s) \sin \theta, h'(s))
+$$
+$$
+    \mathcal{X}_\theta = (-\rho(s)\sin \theta, \rho(s) \cos \theta, 0)
+$$
+So $E=[\rho'(s)]^2 + [h'(s)]^2 = 1, F = 0, G = \rho^2(s)$
+And it follows
+$$
+    S = \iint_{[0,l] \times [0, 2 \pi)}\sqrt{EG-F^2}dsd\theta
+    = 2 \pi \int_0^l \sqrt{\rho^2(s)}ds = 2 \pi \int_0^l \rho(s)ds
+$$
+\qed
+\par
+\textbf{b. }$\rho(s) = a + r \sin \frac{s}{r}$,
+$$
+    S = 2 \pi \int_0^{2\pi r}\rho(s)ds = 2 \pi \int_0^{2\pi r}(a+r \sin \frac{s}{r})ds = 4 \pi^2 ra
+$$
+\qed
+
+\par
+\textbf{2-5 Ex.14}\\
+(Gradient on surfaces)The gradient of a 
+differentiable function $f:S \to \mathbb{R}$ is a map
+$\nabla f: S \to \mathbb{R}^3$ which assigns to each point
+$p \in S$ a vector $\nabla f(p) \in T_p(S) \subset \mathbb{R}^3$
+such that
+$$
+    <\nabla f(p), v>_p = df_p(v)
+$$
+for all $v \in T_p(S)$. \\
+Show that,
+\par
+\textbf{a. }If $E,F,G$ are the coefficients of the first
+fundamental form in a parametrization 
+$\mathcal{X}: U \subset \mathbb{R}^2 \to S$, then
+grad $f$ on $\mathcal{X}(U)$ is given by
+$$
+    \nabla f = \frac{f_uG-f_vF}{EG-F^2}\mathcal{X}_u + \frac{f_vE-f_uF}{EG-F^2}\mathcal{X}_v
+$$
+
+\par
+\textbf{b. }If you let $p \in S$ be fixed and $v$ vary in 
+the unit circle $|v|=1$ in $T_p(S)$, then $df_p(v)$ is 
+maximum if and only if
+$$
+    v = \frac{\nabla f}{|\nabla f|}
+$$
+
+\par
+\textbf{c. }If $\nabla f \neq 0$ at all points of the
+level curve
+$$
+    C = \{q \in S: f(q)=const.\}
+$$
+Then $C$ is a regular curve on $S$ and $\nabla f$ is normal
+to $C$ at all points of $C$.
+
+\par
+\textbf{\textit{Solution.}}\\
+\textbf{a. }$\nabla f(p)$ is a vector in $T_p(S)$, so it
+can be written as
+$$
+    \nabla f(p) = \alpha \mathcal{X}_u + \beta \mathcal{X}_v
+$$
+Note that $<\nabla f(p), \mathcal{X}_u> = \alpha E + \beta F$, 
+$<\nabla f(p), \mathcal{X}_v> = \alpha F + \beta G$.
+On the other hand,
+$<\nabla f(p), \mathcal{X}_u> = f_u$, 
+$<\nabla f(p), \mathcal{X}_v> = f_v$, where $f_u,f_v$
+are coordinates of $\nabla f(p)$ under the bases $\{\mathcal{X}_u, \mathcal{X}_v\}$.\\
+Then it follows
+$$
+\alpha= \frac{f_uG-f_vF}{EG-F^2}, \beta=\frac{f_vE-f_uF}{EG-F^2}
+$$
+
+\par
+\textbf{b. }Trivial.
+
+\par
+\textbf{c. }First we show that $C$ is a regular curve.
+Define $F(u,v,c)=f(u,v)-c$, where $c$ is the constant and 
+$u,v$ are coordinates under the bases 
+$\{\mathcal{X}_u, \mathcal{X}_v\}$.\\
+Since we know that $\nabla f(p) \neq 0$ for each $p \in C$,
+without loss of generality, we can assume that in a neighborhood
+$U$ of $p$, $f_u \neq 0$, then apply implicit function theorem,
+$\dfrac{\partial{F}}{\partial{u}} = f_u \neq 0$, so there exists
+a function $u = g(v, c)$, then we get a curve $\alpha(t) = (u(t), v(t))$
+where
+$$
+    u = g(t,c)=u(t), v=t=v(t)
+$$
+And it satisfy $f(\alpha(t)) = c$, so $\alpha(t) \subset C$.
+Also note that $|\alpha'(t)|=\sqrt{[u'(t)]^2 + 1} > 0$, which
+implies $\alpha$ is a regular curve. Since
+$p$ is arbitrary, $C$ is a regular curve.\\
+Assume that $C$ is given by $\alpha: I \to S$, 
+$\alpha(t)=p$, $\alpha'(t)=w \neq 0$, and let
+$g = f \circ \alpha$, then $g(t) = c$. So 
+$g'(t)=df_p(\alpha'(t)) = 0$, hence $<\nabla(f), \alpha'(t)>=0$
+for all $t \in I$. Thus $\nabla f$ is normal to $C$.\qed
+
 
 \end{document}
