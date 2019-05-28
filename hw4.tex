@@ -1,0 +1,747 @@
+\documentclass{article}
+
+\usepackage{changepage,aligned-overset,amsfonts,amssymb,amsthm,enumerate,geometry}
+\usepackage{xeCJK}
+\geometry{a4paper, scale = 0.8}
+\setCJKmainfont{STSong}
+\begin{document}
+%\author{谢铮 15338200}
+\title{Homework 4}
+\date{Mar 22, 2019}
+\maketitle
+
+\setlength\parindent{0em}   % cancel all indent
+\setlength\parskip{1.0\baselineskip} % set skip between paragraphs
+
+\par
+\textbf{3-2 Ex.2}\\
+Show that if a surface is tangent to a plane along a curve, then
+the points of this curve are either parabolic or planar.
+
+\par
+\textbf{\textit{Solution.}}\\
+Suppose that $S$ is tangent to the plane $P$ along the curve $C$.
+For each $p \in C$, suppose that the tangent vector of $C$ at $p$
+is $w=ae_1+be_2$ where $e_1, e_2$ are eigenvectors of $dN_p$ and
+the corresponding eigenvalues are $-k_1, -k_2$.
+Since $S$ is tangent to the plane $P$ along the curve so
+$dN_p(w)=-k_1ae_1-k_2be_2=0$, hence $k_1=0$ or $k_2=0$, i.e. $p$
+is parabolic or planar. \qed
+
+\par
+\textbf{3-2 Ex.5}\\
+Show that the mean curvature $H$ at $p \in S$ is given by
+$$
+    H = \frac{1}{\pi} \int_0^\pi k_n(\theta)d\theta
+$$
+where $k_n(\theta)$ is the normal curvature at $p$ along a direction
+making an angle $\theta$ with a fixed direction.
+
+\par
+\textbf{\textit{Solution.}}\\
+Suppose that the eigenvectors of $dN_p$ are $e_1,e_2$, then
+$$
+\begin{aligned}
+    \frac{1}{\pi}\int_0^{\pi}k_n(\theta)d\theta
+    &= \frac{1}{\pi}\int_0^{\pi}k_n(e_1\cos \theta + e_2 \sin \theta)d\theta\\
+    &= \frac{1}{\pi}\int_0^{\pi} -\langle dN_p(e_1\cos \theta + e_2 \sin \theta), e_1\cos \theta+e_2\sin \theta\rangle d\theta\\
+    &= \frac{1}{\pi}\int_0^{\pi} \langle k_1\cos \theta e_1 + k_2 \sin \theta e_2, e_1\cos \theta+e_2\sin \theta\rangle d\theta\\
+    &= \frac{1}{\pi}\int_0^{\pi} (k_1 \cos^2 \theta + k_2 \sin^2 \theta) d\theta\\
+    &= \frac{1}{\pi}\int_0^{\pi} (k_1 \frac{1 + \cos 2\theta}{2} + k_2 \frac{1 - \sin 2\theta}{2}) d\theta\\
+    &= \frac{1}{\pi}\int_0^{\pi} \frac{k_1 + k_2}{2} d\theta\\
+    &= \frac{k_1+k_2}{2}
+\end{aligned}
+$$
+\qed
+
+\par
+\textbf{3-2 Ex.9}\\
+Prove that\\
+\textbf{a. }The image $N \circ \alpha$ by the Gauss map
+$N: S \to S^2$ of a parametrized regular curve $\alpha: I \to S$
+which contains no planar or parabolic points is a parametrized
+regular curve on the surface $S^2$ (called the spherical image
+of $\alpha$).\\
+\textbf{b. }If $C = \alpha(I)$ is a line of curvature, and $k$
+it its curvature at $p$, then
+$$
+    k = \vert k_nk_N \vert,
+$$
+where $k_n$ is the normal curvature at $p$ along the tangent
+line of $C$ and $k_N$ is the curvature of the spherical image
+$N(C) \subset S^2$ at $N(p)$.
+
+\par
+\textbf{\textit{Solution.}}\\
+\textbf{a. }Let's denote $N \circ \alpha$ by $\beta$.
+Note that
+$$
+    \beta'(s) = dN_p(\alpha'(s)) = dN_p(e_1 \cos \theta + e_2 \sin \theta)
+    = -k_1e_1 \cos \theta - k_2e_2 \sin \theta
+$$
+where $p = \alpha(s)$, then
+$$
+    \langle \beta'(s), \beta'(s) \rangle = k_1^2 \cos^2 \theta + k_2^2 \sin^2 \theta > 0
+$$
+since $k_1 \neq 0, k_2 \neq 0$. Therefore $\beta$ is regular. \qed
+
+\par
+\textbf{b. }WLOG we can assume that $dN(\alpha'(s)) = -k_1\alpha'(s)$, then
+$$
+    k_n = -\langle dN_p(\alpha'(s)), \alpha'(s) \rangle = \langle k_1\alpha'(s), \alpha'(s) \rangle = k_1
+$$
+Also note that 
+$$
+\begin{aligned}
+    k_N &= \frac{|\beta'(s) \wedge \beta''(s)|}{|\beta'(s)|^3}\\
+    &= \frac{|(-k_1 \alpha'(s)) \wedge (-k_1 \alpha''(s))|}{|k_1|^3}\\
+    &= \frac{|k_1^2k|}{|k_1|^3}
+\end{aligned}
+$$
+Therefore
+$$
+    |k_nk_N| = |k_1 \frac{|k_1|^2k}{|k_1|^3}| = k
+$$
+\qed
+
+\par
+\textbf{3-2 Ex.15(Theorem of Joachimstahl.)}\\
+Suppose that $S_1$ and $S_2$ intersect along a regular curve
+$C$ and make an angle $\theta(p)$, $p \in C$. Assume that
+$C$ is a line of curvature of $S_1$. Prove that $\theta(p)$
+is constant if and only if $C$ is a line of curvature of $S_2$.
+
+\par
+\textbf{\textit{Solution.}}\\
+$"\Rightarrow":$\\
+Suppose that $\theta(p)$ is constant.
+Since we know that $C$ is a line of curvature of $S_1$, so the tangent
+vector denoted by $w$ of $C$ at $p$ satisfies
+$$
+    d{N_1}_p(w) = -kw
+$$
+for some principle curvature $k$.
+Since we know that $\theta(p)$ is constant, then $\langle N_1(p), N_2(p) \rangle$ 
+is constant. 
+Let $f(t) = \langle {N_1}(\alpha(t)), {N_2}(\alpha(t)) \rangle$,
+where $\alpha(I) = C$, $\alpha(0) = p$, $\alpha'(0) = w$.
+Then 
+$$
+    f'(t) = \langle d{N_1}_p(\alpha'(t)), {N_2}(\alpha(t)) \rangle + 
+    \langle {N_1}(\alpha(t)), d{N_2}_p(\alpha'(t)) \rangle
+$$
+Particularly,
+$$
+\begin{aligned}
+    f'(0) &= \langle -kw, {N_2}(p) \rangle + \langle {N_1}(p), d{N_2}_p(w) \rangle\\
+    &= \langle N_1(p), d{N_2}_p(w)\rangle = 0
+\end{aligned}
+$$
+Thus $d{N_2}_p(w) \in T_p(S_1)$. And we have known that $d{N_2}_p(w) \in T_p(S_2)$.
+Therefore $d{N_2}_p(w) \in T_p(S_1) \cap T_p(S_2)$, and it follows
+$$
+    d{N_2}_p(w) = \lambda w
+$$
+So $w$ is a principal direction at $p$.
+Since $p$ is arbitrary, this shows that $C$ is a line of curvature.
+
+\par
+$"\Leftarrow":$\\
+Suppose that $C$ is a line of curvature of $S_2$, then we have
+$$
+    d{N_1}_p(w) = -k_1 w, \forall w \in T_p(S_1)
+$$
+$$
+    d{N_2}_p(w) = -k_2 w, \forall w \in T_p(S_2)
+$$
+for some $k_1, k_2 \in \mathbb{R}$.
+Suppose $C$ is parametrized by $\alpha$, then let
+$$
+    f(t) = \langle {N_1}_p(\alpha(t)), {N_2}_p(\alpha(t)) \rangle
+$$
+It follows
+$$
+\begin{aligned}
+    f'(t) &= \langle d{N_1}_p(\alpha'(t)), {N_2}_p(\alpha(t)) \rangle
+    + \langle {N_1}_p(\alpha(t)), d{N_2}_p(\alpha'(t)) \rangle \\
+    &= \langle -k_1 \alpha'(t), {N_2}_p(\alpha(t)) \rangle
+    + \langle {N_1}_p(\alpha(t)), -k_2 \alpha'(t) \rangle\\
+    &= 0 + 0 = 0
+\end{aligned}
+$$
+Thus $f(t) \equiv 0$, so $\theta(p)$ is a constant.
+\qed
+
+
+\par
+\textbf{3-2 Ex.17}\\
+Show that if $H \equiv 0$ on $S$ and $S$ has no planar points,
+then the Gauss map $N: S \to S^2$ has the following property:
+$$
+    \langle dN_p(w_1), dN_p(w_2) \rangle = -K(p)\langle w_1, w_2 \rangle
+$$
+for all $p \in S$ and all $w_1,w_2 \in T_p(S)$. Show that the
+above condition implies that the angle of two intersecting curves
+on $S$ and the angle of their spherical images are equal up
+to a sign.
+
+\par
+\textbf{\textit{Solution.}}\\
+We can assume that the eigenvalues of $dN_p$ are $k$ and $-k$ and
+the corresponding eigenvectors are $e_1,e_2$. 
+Suppose $w_1 = e_1 \cos \theta_1 + e_2 \sin \theta_1$,
+$w_2 = e_1 \cos \theta_2 + e_2 \sin \theta_2$.
+Then
+$$
+\begin{aligned}
+    \langle dN_p(w_1), dN_p(w_2) \rangle
+    &= \langle ke_1 \cos \theta_1 - ke_2 \sin \theta_1, ke_1 \cos \theta_1 - ke_2 \sin \theta_2 \rangle\\
+    &= k^2\cos \theta_1 \cos \theta_2 + k^2 \sin \theta_1 \sin \theta_2
+\end{aligned}
+$$
+while
+$$
+\begin{aligned}
+    -K(p)\langle w_1, w_2 \rangle &= -K(p) \langle e_1 \cos \theta_1 + e_2 \sin \theta_1, e_1 \cos \theta_2 + e_2 \sin \theta_2\rangle\\
+    &= k^2(\cos \theta_1 \cos \theta_2 + \sin \theta_1 \sin \theta_2)
+\end{aligned}
+$$
+\qed
+
+\par
+\textbf{3-2 Ex.18}\\
+Let $\lambda_1, ... \lambda_m$ be the normal curvatures at
+$p \in S$ along directions making angles $0, \frac{2\pi}{m}, ..., (m-1)\frac{2\pi}{m}$
+with a principal direction, $m>2$. Prove that
+$$
+    \lambda_1 + ... + \lambda_m = mH,
+$$
+where $H$ is the mean curvature at $p$.
+
+\par
+\textbf{\textit{Solution.}}\\
+Note that
+$$
+\begin{aligned}
+    \lambda_k &= k_1 \cos^2 \theta_k + k_2 \sin^2 \theta_k \\
+    &= k_1 \frac{1 + \cos (2 \theta_k)}{2} + k_2 \frac{1 - \cos (2 \theta_k)}{2} \\ 
+    &= H + \frac{k_1 - k_2}{2}\cos (2 \theta_k)
+\end{aligned}
+$$
+Then
+$$
+\begin{aligned}
+    \lambda_1 + \lambda_2 + ... + \lambda_m &= mH + \frac{k_1 - k_2}{2}\bigl[\cos(2\theta_1)+ \cos(2\theta_2)+ ... + \cos(2\theta_m)\bigr]\\
+    &=mH + \frac{k_1-k_2}{4}\sum_{k=1}^m\bigl[\cos(2\theta_k) + \cos(2\theta_{m-k+1})\bigr]\\
+    &=mH + \frac{k_1-k_2}{4}\sum_{k=1}^m\bigl[\cos(\frac{4k\pi}{m}) + \cos(\frac{4(m-k+1)\pi}{m})\bigr]\\
+    &=mH + \frac{k_1-k_2}{4}\sum_{k=1}^m\bigl[\cos(\frac{4k\pi}{m}) - \cos(\frac{4(k-1)\pi}{m})\bigr]\\
+    &=mH + \frac{k_1-k_2}{4}\bigl[\cos(4\pi) - \cos(0)\bigr] = mH
+\end{aligned}
+$$
+\qed
+
+\par
+\textbf{3-2 Ex.19}\\
+Let $C \subset S$ be a regular curve in $S$. Let $p \in C$
+and $\alpha(s)$ be a parametrization of $C$ in $p$ by arc
+length so that $\alpha(0) = p$. Choose in $T_p(S)$ an
+orthonormal positive basis $\{t,h\}$, where $t = \alpha'(0)$.
+The geodesic torsion $\tau_g$ of $C \subset S$ at $p$ is
+defined by
+$$
+    \tau_g = \langle \frac{dN}{ds}(0), h\rangle
+$$
+Prove that\\
+\textbf{a. }$\tau_g = (k_1 - k_2)\cos \phi \sin \phi$, where
+$\phi$ is the angle from $e_1$ to $t$ and $t$ is the unit 
+tangent vector corresponding to the principal curvature $k_1$.\\
+\textbf{b. }If $\tau$ is the torsion of $C$, $n$ is the
+(principal) normal vector of $C$ and $\cos \theta = \langle N, n \rangle$,
+then
+$$
+    \frac{d\theta}{ds} = \tau - \tau_g
+$$
+\textbf{c. }The lines of curvature of $S$ are characterized
+by having geodesic torsion identically zero.
+
+\par
+\textbf{\textit{Solution.}}\\
+\textbf{a. }
+Since $t = e_1 \cos \phi + e_2 \sin \phi$, $dN_p(e_1) = -k_1e_1$.\\
+Note that
+$$
+\begin{aligned}
+    \frac{dN}{ds}(0) &= dN_p(\alpha'(0)) = dN_p(e_1 \cos \phi + e_2 \sin \phi)
+    = -k_1e_1 \cos \phi -k_2e_2 \sin \phi\\
+    &= -k_1e_1 \cos \phi -k_1e_2 \sin \phi + (k_1 - k_2)e_2 \sin \phi\\
+    &= -k_1t + (k_1-k_2)e_2 \sin \phi
+\end{aligned}
+$$
+Also note that since $\phi$ is the angle from $e_1$ to $t$, so the angle from
+$e_2$ to $h$ is $\phi$.
+Thus
+$$
+    \tau_g = \langle -k_1t + (k_1-k_2)e_2 \sin \phi , h\rangle = (k_1-k_2) \sin \phi \langle e_2, h \rangle = (k_1-k_2) \cos \phi \sin \phi
+$$
+\qed
+
+\par
+\textbf{b. }
+Note that
+$$
+\begin{aligned}
+    \frac{d\theta}{ds} &= \frac{d\theta}{d\cos \theta}\frac{d\cos \theta}{ds} = - \frac{1}{\sin \theta} \frac{d}{ds}\langle N, n \rangle
+    &= -\frac{1}{\sin \theta}(\langle \frac{dN}{ds}, n\rangle + \langle N, \frac{dn}{ds}\rangle)
+\end{aligned}
+$$
+where
+$$
+\langle \frac{dN}{ds}, n \rangle = \langle \frac{dN}{ds}, h\sin \theta\rangle = \tau_g \sin \theta,\quad \frac{dn}{ds} = -kt - \tau b, \quad \langle N,b \rangle = \sin \theta
+$$ 
+Thus
+$$
+\frac{d\theta}{ds} = - \frac{1}{\sin \theta}(\tau_g \sin \theta - \tau \sin \theta)
+=\tau - \tau_g
+$$
+\qed
+
+\par
+\textbf{c. }
+By the conclusion of \textbf{a.} we know that the geodesic curvature of $C$ is
+$$
+\tau_g = (k_1 - k_2)\cos\phi \sin \phi
+$$
+If $C$ is a line of curvature of $S$, then $t=e_1$ or $t=e_2$,
+i.e. $\phi = 0$ or $\phi = \frac{\pi}{2}$, leading to $\tau_g = 0$. \qed
+
+\textbf{3-3 Ex.5}\\
+Consider the parametrized surface (Enneper's surface)
+$$
+    \mathcal{X}(u,v) = (u - \frac{u^3}{3} + uv^2, v - \frac{v^3}{3} + vu^2, u^2 - v^2)
+$$
+and show that\\
+\textbf{a. }The coefficients of the first fundamental form are
+$$
+    E = G = (1+u^2+v^2)^2, F = 0
+$$
+\par
+\textbf{b. }The coefficients of the second fundamental form are
+$$
+    e = 2, g = -2, f = 0
+$$
+\par
+\textbf{c. }The principal curvatures are
+$$
+    k_1 = \frac{2}{(1+u^2+v^2)^2}, k_2 = - \frac{2}{(1+u^2+v^2)^2}
+$$
+\par
+\textbf{d. }The lines of curvature are the coordinate curves.
+\par
+\textbf{e. }The asymptotic curves are $u+v=const.$, $u-v=const.$
+
+\par
+\textbf{\textit{Solution.}}\\
+\textbf{a. }Note that
+$$
+    \mathcal{X}_u = (1 - u^2 + v^2, 2uv, 2u)
+$$
+$$
+    \mathcal{X}_v = (2uv, 1 - v^2 + u^2, -2v)
+$$
+So we have
+$$
+    E = \langle \mathcal{X}_u, \mathcal{X}_u\rangle = (1-u^2+v^2)^2 + 4u^2(1+v^2) = (1+u^2+v^2)^2
+$$
+$$
+    G = \langle \mathcal{X}_v, \mathcal{X}_v\rangle = (1+u^2+v^2)^2
+$$
+$$
+    F = \langle \mathcal{X}_u, \mathcal{X}_v\rangle = 4uv - 4uv = 0
+$$
+\qed
+
+\par
+\textbf{b. }Note that
+$$
+    \mathcal{X}_{uu} = (-2u, 2v, 2)
+$$
+$$
+    \mathcal{X}_{vv} = (2u, -2v, -2)
+$$
+$$
+    \mathcal{X}_{uv} = (2v, 2u, 0)
+$$
+So we have
+$$
+\begin{aligned}
+    e &= \frac{(\mathcal{X}_u, \mathcal{X}_v, \mathcal{X}_{uu})}{\sqrt{EG-F^2}}
+    = \frac{2[u^4 + 2u^2(1+v^2)+(1+v^2)^2]}{\sqrt{EG-F^2}}\\
+    &= \frac{2(1+u^2+v^2)^2}{(1+u^2+v^2)^2} = 2
+\end{aligned}
+$$
+Similarly we have $g = -2$.\\
+Also,
+$$
+    f = \frac{(\mathcal{X}_u, \mathcal{X}_v, \mathcal{X}_{uv})}{\sqrt{EG-F^2}}
+    = \frac{-4u^3v-4uv-4uv^3+4uv+4u^3v+4uv^3}{\sqrt{EG-F^2}} = 0
+$$
+\qed
+
+\par
+\textbf{c. }Since $F=f=0$,
+$$
+    k_1 = \frac{e}{E} = \frac{2}{(1+u^2+v^2)^2},k_2 = \frac{g}{G} = \frac{-2}{(1+u^2+v^2)^2}
+$$
+\qed
+
+\par
+\textbf{d. }Since $F=f=0$, the lines of curvatures are the coordinate curves. \qed
+
+\par
+\textbf{e. }We have known that the principal directions are coordinates, thus
+$$
+    dN_p = \left[\begin{array}{cc}
+        k_1 & \\
+        & k_2
+    \end{array}\right]
+$$
+And the equation
+$$
+    \langle dN_p(u',v'), (u',v') \rangle = k_1u'^2 + k_2v'^2 = \frac{2(u'^2-v'^2)}{(1+u^2+v^2)^2} = 0
+$$
+implies that $u'-v'=0$ or $u'+v'=0$. So we have $u - v = const.$ or $u + v = const.$. \qed
+
+\par
+\textbf{3-3 Ex.7(Surfaces of Revolution with Constant Curvature)}\\
+$(\phi(v) \cos u, \phi(v) \sin u, \psi(v))$, $\phi \neq 0$ is given as a surface of
+revolution with constant Gaussian curvature $K$. To determine the functions $\phi$
+and $\psi$, choose the parameter $v$ in such a way that $(\phi')^2+(\psi')^2=1$
+(geometrically, this means that $v$ is the arc length of the generating curve 
+$(\phi(v), \psi(v))$). \\
+Show that\\
+\textbf{a. }$\phi$ satisfies $\phi'' + K \phi = 0$ and $\psi$ is given by
+$$
+    \psi = \int \sqrt{1 - (\phi')^2}dv
+$$
+thus, $0<u<2\pi$, and the domain of $v$ is such that the last integral makes sense.
+
+\par
+\textbf{b. }All surfaces of revolution with constant curvature $K=1$ which intersect
+perpendicularly the plane $xOy$ are given by
+$$
+    \phi(v) = C\cos v, \quad \psi(v) = \int_0^v \sqrt{1-C^2 \sin^2v}dv
+$$
+where $C$ is a constant ($C = \phi(0)$). Determine the domain of $v$ and draw a
+rough sketch of the profile of the surface in the $xz$ plane for the cases $C=1$,
+$C>1$, $C<1$. Observe that $C=1$ gives a sphere.
+
+\par
+\textbf{c. }All surfaces of revolution with constant curvature $K=-1$ may be given
+by one of the following types:\\
+1. $\phi(v) = C\cosh v, \psi(v) = \int_0^v \sqrt{1-C^2 \sinh^2 v}dv.$\\
+2. $\phi(v) = C\sinh v, \psi(v) = \int_0^v \sqrt{1-C^2 \cosh^2 v}dv.$\\
+3. $\phi(v) = e^v, \psi(v) = \int_0^v \sqrt{1-e^{2v}}dv.$\\
+
+\par
+\textbf{e. }The only surfaces of revolution with $K \equiv 0$ are the right circular
+cylinder, the right circular cone, and the plane.
+
+\par
+\textbf{\textit{Solution.}}\\
+\textbf{a. }First note that
+$$
+    \mathcal{X}_u = (-\phi(v)\sin u, \phi(v) \cos u, 0)
+$$
+$$
+    \mathcal{X}_v = (\phi'(v)\cos u, \phi'(v) \sin u, \psi'(v))
+$$
+$$
+    E = \phi^2(v), F = 0, G = \phi'^2(v) + \psi'^2(v) = 1
+$$
+Moreover,
+$$
+    \mathcal{X}_{uu} = (-\phi(v)\cos u, -\phi(v) \sin u, 0)
+$$
+$$
+    \mathcal{X}_{vv} = (\phi''(v)\cos u, \phi''(v) \sin u, \psi''(v))
+$$
+$$
+    \mathcal{X}_{uv} = (-\phi'(v)\sin u, \phi'(v) \cos u, 0)
+$$
+$$
+    e = \frac{(\mathcal{X}_u, \mathcal{X}_v, \mathcal{X}_{uu})}{\sqrt{EG-F^2}}
+    = -\phi(v) \psi'(v)
+$$
+$$
+    f = \frac{(\mathcal{X}_u, \mathcal{X}_v, \mathcal{X}_{uv})}{\sqrt{EG-F^2}}
+    = 0
+$$
+$$
+    g = \frac{(\mathcal{X}_u, \mathcal{X}_v, \mathcal{X}_{vv})}{\sqrt{EG-F^2}}
+    = \phi''(v)\psi'(v) - \phi'(v)\psi''(v)
+$$
+Then
+$$
+\begin{aligned}
+    K &= \frac{eg-f^2}{EG-F^2} = \frac{\phi\psi'(\phi'\psi''-\phi''\psi')}{\phi^2}\\
+    &= \frac{\psi'(\phi'\psi''-\phi''\psi')}{\phi}
+\end{aligned}
+$$
+Since we know that $\phi'^2 + \psi'^2 = 1$, by differentiating this equation we obtain
+$\phi'\phi'' + \psi'\psi'' = 0$, thus
+$$
+    K = -\frac{\psi'^2\phi'' + \phi'^2\phi''}{\phi} = -\frac{\phi''}{\phi}
+$$
+Hence $\phi'' + K\phi = 0$. Also,
+$$
+    \psi = \int \psi'dv = \int \sqrt{1 - \phi'^2}dv
+$$
+\qed
+
+\par
+\textbf{b. }We have known that $\phi + \phi'' = 0$, whose solution is
+$$
+    \phi(v) = C \cos v
+$$
+where $C$ is a constant. It follows that
+$$
+    \psi(v) = \int_0^v \sqrt{1 - \phi'^2}dv = \int_0^v \sqrt{1 - C^2 \sin^2v}dv
+$$
+It's easy to see that $v \in (-\arcsin \frac{1}{|C|}, \arcsin \frac{1}{|C|})$.
+\qed
+
+\par
+\textbf{c. } Similarly, the equations 
+$$
+\phi'' - \phi = 0, \phi'^2 + \psi'^2 = 1
+$$
+have the following three types of solution:\\
+1. $\phi(v) = C\cosh v, \psi(v) = \int_0^v \sqrt{1-C^2 \sinh^2 v}dv.$\\
+2. $\phi(v) = C\sinh v, \psi(v) = \int_0^v \sqrt{1-C^2 \cosh^2 v}dv.$\\
+3. $\phi(v) = e^v, \psi(v) = \int_0^v \sqrt{1-e^{2v}}dv.$ \qed
+
+\par
+\textbf{e. } It's easy to see that $\phi'' = 0$ has the following solutions:\\
+1. $\phi \equiv C, \psi(v) = v$, where $C$ is a constant, $S$ is a cylinder.\\
+2. $\phi(v) = kv, \psi(v) = \sqrt{1-k^2}v$, where $k \in (-1, 0) \cup (0, 1)$, $S$ is a cone.\\
+3. $\phi(v) = v, \psi \equiv C$, where $C$ is a constant, $S$ is a plane.\qed
+
+\par
+\textbf{3-3 Ex.13}\\
+Let $F: \mathbb{R}^3 \to \mathbb{R}^3$ be the map defined by $F(p)=cp$, $p \in \mathbb{R}^3$,
+$c$ a positive constant. Let $S \subset \mathbb{R}^3$ be a regular surface and set
+$F(S) = \bar{S}$. Show that $\bar{S}$ is a regular surface, and find formulas relating
+the Gaussian and mean curvatures, $K$ and $H$, of $S$ with the Gaussian and mean
+curvatures, $\bar{K}$ and $\bar{h}$, of $\bar{S}$.
+
+\par
+\textbf{\textit{Solution.}}\\
+Suppose $S$ is parametrized by $\mathcal{X}(u,v)$, then $\bar S$ is parametrized by
+$\bar{\mathcal{X}}(u,v)=c\mathcal{X}(u, v)$. It follows that
+$$
+    \bar{\mathcal{X}}_u(u,v) = c \mathcal{X}_u(u, v), \quad
+    \bar{\mathcal{X}}_v(u,v) = c \mathcal{X}_v(u, v)
+$$
+$$
+    \bar{\mathcal{X}}_{uu}(u,v) = c \mathcal{X}_{uu}(u, v), \quad
+    \bar{\mathcal{X}}_{vv}(u,v) = c \mathcal{X}_{vv}(u, v)
+$$
+Thus,
+$$
+    \bar{E} = c^2 E, \quad \bar{F} = c^2F, \quad \bar{G} = c^2G
+$$
+And
+$$
+    \bar{e} = \frac{(\bar{\mathcal{X}}_u, \bar{\mathcal{X}}_v, \bar{\mathcal{X}}_{uu})}{\sqrt{\bar{E}\bar{G} - \bar{F}^2}}
+    = \frac{(c\mathcal{X}_u, c\mathcal{X}_v, c\mathcal{X}_{uu})}{c^2 \sqrt{EG-F^2}} = ce
+$$
+Similarly, we have $\bar{f} = cf, \bar{g} = cg$.
+Finally we obtain
+$$
+    \bar{K} = \frac{\bar{e}\bar{g} - \bar{f}^2}{\bar{E}\bar{G}-\bar{F}^2}
+    = \frac{c^2(eg - f^2)}{c^4(EG - F^2)} = \frac{K}{c^2}
+$$
+$$
+    \bar{H} = \frac{1}{2} \frac{\bar{e}\bar{G}-2\bar{f}\bar{F}+\bar{g}\bar{E}}{\bar{E}\bar{G}-\bar{F}^2}
+    = \frac{1}{2}\frac{c^3(eG-2fF+gE)}{c^4(EG-F^2)} = \frac{H}{c}
+$$
+\qed
+
+\par
+\textbf{3-3 Ex.16}\\
+Show that a surface which is compact has an elliptic point.
+
+\par
+\textbf{\textit{Solution.}}\\
+Since $S$ is compact, $S$ is bounded. Therefore, there are spheres of
+$\mathbb{R}^3$, centered in a fixed point $O \in \mathbb{R}^3$, such
+that $S$ is contained in the interior of the region bounded by any of
+them. Consider the set of all such spheres. Let $r$ be the infimum of
+their radius and let $\Sigma \subset \mathbb{R}^3$ be a sphere of
+radius $r$ centered in $O$. It is clear that $\Sigma$ and $p$ has only
+one common point, say $p$, since $S$ is compact. The tangent plane to
+$\Sigma$ at $p$ has only the common point $p$ with $S$, in a 
+neighborhood of $p$. Therefore, $\Sigma$ and $S$ are tangent at $p$.
+By observing the normal sections at $p$, it is easy to conclude that
+any normal curvature of $S$ at $p$ is greater than or equal to the
+corresponding curvature of $\Sigma$ at $p$. Therefore,
+$K_S(p) \geq K_\Sigma(p) > 0$, and $p$ is an elliptic point, as we
+desired. \qed
+
+\par
+\textbf{3-3 Ex.21}\\
+Let $S$ be a surface with orientation $N$. Let $V \subset S$ be an open set in $S$
+and let $f:V \subset S \to \mathbb{R}$ be any nowhere-zero differentiable function
+in $V$. Let $v_1$ and $v_2$ be two differentiable(tangent) vector fields in $V$
+such that at each point of $V$, $v_1$ and $v_2$ are orthonormal and $v_1 \wedge v_2 = N$.\\
+\textbf{a. }Prove that the Gaussian curvature $K$ of $V$ is given by
+$$
+    K = \frac{\langle d(fN)(v_1) \wedge d(fN)(v_2), fN \rangle}{f^3}
+$$
+\textbf{b. }Apply the above result to show that if $f$ is the restriction of
+$$
+    \sqrt{\frac{x^2}{a^4}+\frac{y^2}{b^4}+\frac{z^2}{c^4}}
+$$
+to the ellipsoid
+$$
+    \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1
+$$
+then the Gaussian curvature of the ellipsoid is
+$$
+    K = \frac{1}{a^2b^2c^2}\frac{1}{f^4}
+$$
+
+\par
+\textbf{\textit{Solution.}}\\
+\textbf{a. }By definition, for each $w \in T_p(S)$, choose
+$\alpha: I \to S$ such that $\alpha(0)=p, \alpha'(0)=w$, then
+$$
+\begin{aligned}
+    d(f(p)N_p)(w) &= \frac{d}{dt}(f(\alpha(t))N(\alpha(t)))|_{t=0}\\
+    &= df_p(w)N_p + f(p)dN_p(w)
+\end{aligned}
+$$
+Note that $N_p$ is perpendicular to $T_p(S)$, it follows
+$$
+\begin{aligned}
+    \frac{\langle d(fN)(v_1) \wedge d(fN)(v_2), fN\rangle}{f^3}
+    &= \frac{\langle (df_p(v_1)N_p + f(p)dN_p(v_1))\wedge (df_p(v_2)N_p + f(p)dN_p(v_2)), fN\rangle}{f^3}\\
+    &= \frac{\langle fdN_p(v_1)\wedge fdN_p(v_2), fN\rangle}{f^3}\\
+    &= \frac{f^3\langle dN_p(v_1) \wedge dN_p(v_2), N\rangle}{f^3}\\
+    &= det(dN_p)\langle v_1 \wedge v_2, N\rangle = K
+\end{aligned}
+$$
+\qed
+
+\par
+\textbf{b. }By differentiating the equation 
+$$
+    \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1
+$$
+we obtain
+$$
+    \frac{xx'}{a^2} + \frac{yy'}{b^2} + \frac{zz'}{c^2} = 0
+$$
+this implies
+$$
+    n = (\frac{x}{a^2}, \frac{y}{b^2}, \frac{z}{c^2})
+$$
+is a normal vector at $(x,y,z)$. And $f = \Vert n \Vert$.\\
+So we have
+$$
+    N = \frac{n}{f}
+$$
+Then choose $v_1 = (v_{11}, v_{12}, v_{13}), v_2 = (v_{21}, v_{22}, v_{23})$ 
+such that $v_1 \wedge v_2 = N$, it follows
+$$
+\begin{aligned}
+    K &= \frac{\langle dfN(v_1) \wedge dfN(v_2), fN \rangle}{f^3}
+    = \frac{\langle (\dfrac{v_{11}}{a^2}, \dfrac{v_{12}}{b^2}, \dfrac{v_{13}}{c^2}) \wedge (\dfrac{v_{21}}{a^2}, \dfrac{v_{22}}{b^2}, \dfrac{v_{23}}{c^2}), n \rangle}{f^3}\\
+    &= \frac{1}{f^3}
+    \left|
+    \begin{array}{ccc}
+        \dfrac{v_{11}}{a^2} & \dfrac{v_{12}}{b^2} & \dfrac{v_{13}}{c^2}\\\\
+        \dfrac{v_{21}}{a^2} & \dfrac{v_{22}}{b^2} & \dfrac{v_{23}}{c^2}\\\\
+        \dfrac{x}{a^2}&\dfrac{y}{b^2}&\dfrac{z}{c^2}
+    \end{array}
+    \right|
+    = \frac{1}{a^2b^2c^2f^3}
+    \left|
+    \begin{array}{ccc}
+        v_{11} & v_{12} & v_{13}\\\\
+        v_{21} & v_{22} & v_{23}\\\\
+        x&y&z
+    \end{array}
+    \right|\\
+    &= \frac{1}{a^2b^2c^2f^3}\langle N, (x,y,z)\rangle\\
+    &= \frac{1}{a^2b^2c^2f^4}\langle (\dfrac{x}{a^2}, \dfrac{y}{b^2}, \dfrac{z}{c^2}), (x,y,z)\rangle\\
+    &= \frac{1}{a^2b^2c^2f^4}
+\end{aligned}
+$$
+\qed
+
+\par
+\textbf{3-3 Ex.22(The Hessian.)}\\
+Let $h:S \to \mathbb{R}$ be a differentiable function on a surface $S$,
+and let $p \in S$ be a critical point of $h$(i.e. $dh_p = 0$). Let $w \in T_p(S)$
+and let
+$$
+    \alpha: (-\epsilon, \epsilon) \to S
+$$
+be a parametrization curve with $\alpha(0)=p$, $\alpha'(0)=w$. Set
+$$
+    H_ph(w) = \frac{d^2(h \circ \alpha)}{dt^2}|_{t=0}
+$$
+\textbf{a. }Let $\mathcal{X}: U \to S$ be a parametrization of $S$ at $p$, and show
+that (the fact that $p$ is a critical point of $h$ is essential here)
+$$
+    H_ph(u'\mathcal{X}_u + v'\mathcal{X}_v) = h_{uu}(p)u'^2 + 2h_{uv}(p)u'v' + h_{vv}(p)v'^2
+$$
+Conclude that $H_ph: T_p(S) \to \mathbb{R}$ is a well-defined(i.e. it does not depend
+on the choice of $\mathcal{X}$) quadratic form on $T_p(S)$. $H_ph$ is called the
+Hessian of $h$ at $p$.
+
+\par
+\textbf{b. }Let $h: S \to \mathbb{R}$ be the height function of $S$ relative to $T_p(S)$;
+that is, $h(q) = \langle q-p, N(p)\rangle$, $q\in S$. Verify that $p$ is a critical point
+of $h$ and thus that the Hessian $H_ph$ is well defined. Show that if $w \in T_p(S)$,
+$|w|=1$, then
+$$
+    H_ph(w) = \text{normal curvature at $p$ in the direction of $w$}
+$$
+Conclude that the Hessian at $p$ of the height function relative to $T_p(S)$ is the 
+second fundamental form of $S$ at $p$.
+
+\par
+\textbf{\textit{Solution.}}\\
+\textbf{a. }Let $h(u,v) = h \circ \alpha$, observe that
+$$
+    \frac{d}{dt}(h \circ \alpha)|_{t=0} = dh_p(w) = h_u u' + h_v v'
+$$
+$$
+    \frac{d^2}{dt^2}(h \circ \alpha)|_{t=0} = \frac{d}{dt}(h_u u' + h_v v')
+    = h_u u'' + h_{uu} u'^2 + h_v v'' + h_{vv} v'^2 + 2h_{uv}u'v'
+$$
+Note that $dh_p = (h_u, h_v) = 0$, so
+$$
+    \frac{d^2}{dt^2}(h \circ \alpha)|_{t=0} = h_{uu} u'^2 + 2h_{uv}u'v' + h_{vv} v'^2
+$$
+which doesn't depend the choice of $\mathcal{X}$. \qed
+
+\par
+\textbf{b. }Consider $h_\alpha(t) = h \circ \alpha$, where $\alpha(0)=p, \alpha'(0)=w$,
+note that
+$$
+    h_{\alpha}'(0) = \langle \alpha'(0), N(p) \rangle = 0
+$$
+Thus $dh_p(w) = h_{\alpha}'(0) = 0$. Since $w$ is arbitrary, $dh_p = 0$.
+So $H_ph$ is well defined.\\
+Observe that
+$$
+    H_ph(w) = \frac{d^2(h \circ \alpha)}{dt^2}|_{t=0}
+    = \frac{d}{dt} \langle \alpha'(t), N(p)\rangle|_{t=0}
+    = \langle \alpha''(0), N_p \rangle = k_n(w)
+$$
+\qed
+
+\end{document}

@@ -1,0 +1,171 @@
+\documentclass{article}
+
+\usepackage{changepage,aligned-overset,amsfonts,amssymb,amsthm,enumerate,geometry}
+\usepackage{xeCJK}
+\geometry{a4paper, scale = 0.8}
+\setCJKmainfont{STSong}
+\begin{document}
+%\author{谢铮 15338200}
+\title{Homework 5}
+\date{Mar 22, 2019}
+\maketitle
+
+\setlength\parindent{0em}   % cancel all indent
+\setlength\parskip{1.0\baselineskip} % set skip between paragraphs
+
+\par
+\textbf{4-2 Ex.2}\\
+Prove the following "converse" of Prop.1: Let $\phi: S \to \bar S$ be an isometry
+and $\mathcal{X}: U \to S$ a parametrization at $p \in S$; then
+$\bar{\mathcal{X}} = \phi \circ \mathcal{X}$ is a parametrization at $\phi(p)$ and
+$\bar E = E$, $\bar F = F$, $\bar G = G$.
+
+\par
+\textbf{\textit{Solution.}}\\
+Since $\phi$ is an isometry from $S$ to $\bar S$, it is also a diffeomorphism thus
+$\bar{\mathcal{X}} = \phi \circ \mathcal{X}$ is a parametrization at $\phi(p)$.\\
+Moreover, for any $w_1, w_2 \in T_p(S)$, 
+$$
+    \langle w_1, w_2 \rangle = \langle d\phi_p(w_1), d\phi_p(w_2) \rangle
+$$
+Particularly,
+$$
+    \langle \mathcal{X}_u, \mathcal{X}_v \rangle 
+    = \langle d\phi_p(\mathcal{X}_u), d\phi_p(\mathcal{X}_v) \rangle
+    = \langle \bar{\mathcal{X}}_u, \bar{\mathcal{X}}_u \rangle
+$$
+Thus $E = \bar E$. Similarly we can obtain $F = \bar F$, $G = \bar G$. \qed
+
+\par
+\textbf{4-2 Ex.3}\\
+Show that a diffeomorphism $\phi: S \to \bar S$ is an isometry if and only if the
+arc length of any parametrized curve in $S$ is equal to the arc length of the
+image curve by $\phi$.
+
+\par
+\textbf{\textit{Solution.}}\\
+$"\Rightarrow":$
+Suppose that $\phi: S \to \bar S$ is an isometry, then the first fundamental form
+keeps invariant under $\phi$ and thus the arc length, which can be calculated by
+first fundamental form, is also invariant. \qed
+
+\par
+$"\Leftarrow":$
+Pick any parametrized curve $\alpha: I \to S, \alpha(t) = \mathcal{X}(u(t), v(t))$, 
+let $\beta = \phi \circ \alpha$,
+suppose that $s_\alpha = s_\beta$, i.e.
+$$
+    \int_0^T |\alpha'(t)|dt = \int_0^T |\beta'(t)|dt
+$$
+since $\alpha$ is arbitrary, it follows that
+$$
+    |\alpha'(0)| = |\beta'(0)|
+$$
+which can be written as first fundamental form
+$$
+    \sqrt{Eu'^2 + 2Fu'v' + Gv'^2} = \sqrt{\bar Eu'^2 + 2\bar Fu'v' + \bar Gv'^2}
+$$
+for all $u', v'$. Therefore $E = \bar E$, $F = \bar F$, $G = \bar G$. \qed
+
+\par
+\textbf{4-2 Ex.5}\\
+Let $\alpha_1: I \to \mathbb{R}^3$, $\alpha_2: I \to \mathbb{R}^3$
+be regular parametrized curves, where the parameter is the 
+arc length. Assume that the curvatures $k_1$ of $\alpha_1$
+and $k_2$ of $\alpha_2$ satisfy $k_1(s) = k_2(s) \neq 0, s\in I$,
+let
+$$
+    \mathcal{X}_1(s,v) = \alpha_1(s) + v\alpha'_1(s)
+$$
+$$
+    \mathcal{X}_2(s,v) = \alpha_2(s) + v\alpha'_2(s)
+$$
+be their regular tangent surfaces and let $V$ be a neighborhood
+of $(s_0, v_0)$ such that $\mathcal{X}_1(V) \subset \mathbb{R}^3$,
+$\mathcal{X}_2(V) \subset \mathbb{R}^3$ are regular surfaces.
+Prove that 
+$\mathcal{X}_1 \circ \mathcal{X}_2^{-1}: \mathcal{X}_2(V) \to \mathcal{X}_1(V)$
+is an isometry.
+
+\par
+\textbf{\textit{Solution.}}\\
+Let $k(s) = k_1(s) = k_2(s)$
+Note that
+$$
+    {\mathcal{X}_1}_s = \alpha_1'(s) + vk_1(s)n_1(s), {\mathcal{X}_1}_v = \alpha_1'(s)
+$$
+$$
+    {\mathcal{X}_2}_s = \alpha_2'(s) + vk_2(s)n_2(s), {\mathcal{X}_2}_v = \alpha_2'(s)
+$$
+Thus,
+$$
+\begin{aligned}
+    E_1 &= \langle \alpha_1'(s) + vk_1(s)n_1(s), \alpha_1'(s) + vk_1(s)n_1(s) \rangle
+    = |\alpha_1'(s)|^2 + v^2k_1^2(s) 
+    = 1 + v^2k^2(s)\\
+    F_1 &= \langle \alpha_1'(s) + vk_1(s)n_1(s), \alpha_1'(s) \rangle
+    = |\alpha_1'(s)|^2 = 1\\
+    G_1 &= \langle \alpha_1'(s), \alpha_1'(s) \rangle
+    = |\alpha_1'(s)|^2 = 1
+\end{aligned}
+$$
+$$
+\begin{aligned}
+    E_2 &= \langle \alpha_2'(s) + vk_2(s)n_2(s), \alpha_2'(s) + vk_2(s)n_2(s) \rangle
+    = |\alpha_2'(s)|^2 + v^2k_2^2(s) 
+    = 1 + v^2k^2(s)\\
+    F_2 &= \langle \alpha_2'(s) + vk_2(s)n_2(s), \alpha_2'(s) \rangle
+    = |\alpha_2'(s)|^2 = 1\\
+    G_2 &= \langle \alpha_2'(s), \alpha_2'(s) \rangle
+    = |\alpha_2'(s)|^2 = 1
+\end{aligned}
+$$
+which shows that $\phi = \mathcal{X}_1 \circ \mathcal{X}_2^{-1}$ is an isometry. \qed
+
+\par
+\textbf{4-2 Ex.6}\\
+Let $\alpha: I \to \mathbb{R}^3$ be a regular parametrized curve with $k(t) \neq 0$,
+$t \in I$. Let $\mathcal{X}(t,v)$ be its tangent surface. Prove that, for each
+$(t_0, v_0) \in I \times (R - \{0\})$, there exists a neighborhood $V$ of $(t_0, v_0)$
+such that $\mathcal{X}(V)$ is isometric to an open set of the plane(thus, tangent
+surfaces are locally isometric to planes).
+
+\par
+\textbf{\textit{Solution.}}\\
+Suppose $\alpha$ is parametrized by arc length.
+Then consider a plane curve $\beta$, which is also parametrized by arc length.
+And let $k_\beta(s) = k_\alpha(s)$, then by the conclusion of $Ex.5$, the tangent
+surface of $\alpha$ is isometric to the tangent surface of $\beta$, which is an
+open set of a plane since $\beta$ is a plane curve. \qed
+
+\par
+\textbf{4-2 Ex.8}\\
+Let $G: \mathbb{R}^3 \to \mathbb{R}^3$ be a map such that
+$$
+    |G(p) - G(q)| = |p-q|
+$$
+for all $p,q \in \mathbb{R}^3$.\\
+(that is, $G$ is a distance-preserving map). Prove that there exists 
+$p_0 \in \mathbb{R}^3$ and a linear isometry $F$ of the vector space $\mathbb{R}^3$
+such that
+$$
+    G(p) = F(p) + p_0
+$$
+for all $p \in \mathbb{R}^3$.
+
+\par
+\textbf{\textit{Solution.}}\\
+Let $p_0 = G(0)$ and define $F(p) = G(p) - p_0$. Then
+$$
+    |F(p) - F(q)| = |G(p) - G(q)| = |p - q|
+$$
+Particularly, let $q = 0$, we get $|F(p)| = |p|$. And therefore $F(0)=0$.
+Note that for each $w_1, w_2 \in \mathbb{R}^3$,
+$$
+\begin{aligned}
+    |F(w_1 + w_2)|^2 - |F(w_1 - w_2)|^2 &= \langle w_1 + w_2, w_1 + w_2 \rangle - \langle w_1 - w_2, w_1 - w_2 \rangle\\
+    &= 4\langle w_1, w_2 \rangle
+\end{aligned}
+$$
+
+\end{document}
